@@ -81,7 +81,7 @@ Why ZIP by default? ZIP opens in Windows Explorer, macOS, Office, phones and clo
 
 | Channel | Best for | Link |
 |---|---|---|
-| **Microsoft Store** | MSIX install with automatic updates | [Search “ZipFlow” in the Store](https://apps.microsoft.com/search?query=ZipFlow) |
+| **Microsoft Store** | MSIX install with automatic updates | [Download on Microsoft Store](https://apps.microsoft.com/detail/9np4kw9lpgft?cid=DevShareMCLPCS&hl=zh-CN&gl=CN) |
 | **GitHub Releases** | Portable build, no installer, no registry writes | [Latest release](https://github.com/lijiannan1241/ZipFlow/releases) |
 | **Product website** | Screenshots, guides, privacy policy | [lijiannan1241.github.io/ZipFlow](https://lijiannan1241.github.io/ZipFlow/) |
 

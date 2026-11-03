@@ -80,7 +80,7 @@ $ zf r ./project --prefer auto
 
 | 渠道 | 适合 | 链接 |
 |---|---|---|
-| **微软商店** | MSIX 安装，自动更新 | [在商店搜索 “ZipFlow”](https://apps.microsoft.com/search?query=ZipFlow) |
+| **微软商店** | MSIX 安装，自动更新 | [在 Microsoft Store 获取](https://apps.microsoft.com/detail/9np4kw9lpgft?cid=DevShareMCLPCS&hl=zh-CN&gl=CN) |
 | **GitHub Releases** | 免安装版，不写注册表 | [最新版本](https://github.com/lijiannan1241/ZipFlow/releases) |
 | **产品官网** | 截图、指南、隐私政策 | [lijiannan1241.github.io/ZipFlow/zh.html](https://lijiannan1241.github.io/ZipFlow/zh.html) |
 
