@@ -1,0 +1,35 @@
+# ZipFlow — https://lijiannan1241.github.io/ZipFlow/
+# Public documentation and product site. All crawlers are welcome,
+# including AI search and retrieval agents.
+
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://lijiannan1241.github.io/ZipFlow/sitemap.xml

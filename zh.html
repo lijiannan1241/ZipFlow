@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZipFlow 汇压缩 — 解压前先体检的免费压缩软件（Windows）</title>
+<meta name="description" content="ZipFlow（汇压缩）是一款免费、本地优先的 Windows 压缩解压软件。解压前检测 Zip Slip、压缩炸弹、符号链接逃逸等 7 项风险，压缩前推荐最优格式与档位。支持 30+ 格式，无广告、无遥测。">
+<link rel="canonical" href="https://lijiannan1241.github.io/ZipFlow/zh.html">
+<link rel="alternate" hreflang="en" href="https://lijiannan1241.github.io/ZipFlow/">
+<link rel="alternate" hreflang="zh-CN" href="https://lijiannan1241.github.io/ZipFlow/zh.html">
+<link rel="alternate" hreflang="x-default" href="https://lijiannan1241.github.io/ZipFlow/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ZipFlow">
+<meta property="og:title" content="ZipFlow 汇压缩 — 解压之前，先知道它安不安全">
+<meta property="og:description" content="7 项压缩包安全体检、30+ 格式读取、按文件构成推荐压缩方案。Windows 10/11，纯本地运行，零遥测。">
+<meta property="og:url" content="https://lijiannan1241.github.io/ZipFlow/zh.html">
+<meta property="og:image" content="https://lijiannan1241.github.io/ZipFlow/assets/img/og-cover-zh.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ZipFlow 汇压缩 — 解压之前，先知道它安不安全。截图为 7 项压缩包体检报告与 70/100 风险评分。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ZipFlow 汇压缩 — 解压之前，先知道它安不安全">
+<meta name="twitter:description" content="免费、本地优先的 Windows 压缩解压软件。7 项压缩包安全检测，30+ 格式，无广告、无遥测。">
+<meta name="twitter:image" content="https://lijiannan1241.github.io/ZipFlow/assets/img/og-cover-zh.png">
+<meta name="theme-color" content="#0a1220">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/icon-180.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" as="image" href="assets/img/screenshot-health-report.png">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://lijiannan1241.github.io/ZipFlow/#organization",
+      "name": "ZipFlow",
+      "alternateName": "汇压缩",
+      "url": "https://lijiannan1241.github.io/ZipFlow/",
+      "logo": "https://lijiannan1241.github.io/ZipFlow/assets/img/icon-512.png",
+      "sameAs": ["https://github.com/lijiannan1241/ZipFlow"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://lijiannan1241.github.io/ZipFlow/#website-zh",
+      "url": "https://lijiannan1241.github.io/ZipFlow/zh.html",
+      "name": "ZipFlow 汇压缩",
+      "description": "本地优先的 Windows 压缩解压软件，解压前提供 7 项压缩包安全体检，压缩前推荐最优方案。",
+      "inLanguage": "zh-CN",
+      "publisher": { "@id": "https://lijiannan1241.github.io/ZipFlow/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://lijiannan1241.github.io/ZipFlow/#software",
+      "name": "ZipFlow",
+      "alternateName": "汇压缩",
+      "applicationCategory": "UtilitiesApplication",
+      "applicationSubCategory": "文件压缩与归档",
+      "operatingSystem": "Windows 10（1809 及以上）、Windows 11",
+      "softwareVersion": "1.0.0",
+      "fileSize": "53.9MB",
+      "downloadUrl": "https://github.com/lijiannan1241/ZipFlow/releases",
+      "installUrl": "https://apps.microsoft.com/search?query=ZipFlow",
+      "license": "https://www.gnu.org/licenses/lgpl-3.0.html",
+      "isAccessibleForFree": true,
+      "inLanguage": "zh-CN",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" },
+      "description": "ZipFlow（汇压缩）是一款免费、本地优先的 Windows 压缩解压软件。它在解压前读取压缩包结构，完成 7 项安全检测并给出 0–100 评分；压缩前采样文件构成，推荐格式、方法与档位，并预估节省空间与耗时。支持 30+ 种格式读取、7 种容器写入，GUI / CLI / 本地 API 共用同一引擎，完全离线运行。",
+      "featureList": [
+        "7 项压缩包安全体检：路径穿越、符号链接逃逸、压缩炸弹、弱加密、完整性异常、内嵌可执行文件、重复或大小写冲突",
+        "按文件构成推荐压缩格式、档位，并预估节省与耗时",
+        "读取 30+ 种格式，写入 7 种容器",
+        "GUI、命令行与本地 HTTP API 共用同一引擎",
+        "支持 ZIP64、AES-256 与 Zopfli 极限压缩",
+        "完全离线：无遥测，清单不声明 internetClient 能力"
+      ],
+      "screenshot": [
+        "https://lijiannan1241.github.io/ZipFlow/assets/img/screenshot-health-report.png",
+        "https://lijiannan1241.github.io/ZipFlow/assets/img/screenshot-create-archive.png",
+        "https://lijiannan1241.github.io/ZipFlow/assets/img/screenshot-archive-open.png",
+        "https://lijiannan1241.github.io/ZipFlow/assets/img/screenshot-extract.png"
+      ],
+      "publisher": { "@id": "https://lijiannan1241.github.io/ZipFlow/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://lijiannan1241.github.io/ZipFlow/#faq-zh",
+      "inLanguage": "zh-CN",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ZipFlow 是免费的吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "是。ZipFlow 免费下载、免费使用，没有账号、广告、内购或功能次数限制。许可证为 LGPL-3.0，许可证文本随仓库提供。" }
+        },
+        {
+          "@type": "Question",
+          "name": "ZipFlow 会收集我的数据吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "不会。ZipFlow 没有遥测、统计分析或云同步。微软商店安装包不声明 internetClient 能力，Windows 在系统层面阻止联网。文件、文件名和压缩包路径都不会离开本机。" }
+        },
+        {
+          "@type": "Question",
+          "name": "ZipFlow 能解压 RAR 吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "RAR 可以列出和解压，但需要系统安装 7-Zip：RAR 压缩算法专有，ZipFlow 通过外部 7-Zip 引擎读取。不支持创建 RAR。ZIP、7z、TAR 等内置格式无需 7-Zip 即可使用。" }
+        },
+        {
+          "@type": "Question",
+          "name": "ZipFlow 能代替杀毒软件吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "不能。ZipFlow 检查的是压缩包结构和已知的解压攻击模式，不查病毒特征，也不扫描文件内容。请继续开启 Windows 安全中心或其他杀毒软件，并把干净的体检报告视为一个信号，而不是保证。" }
+        },
+        {
+          "@type": "Question",
+          "name": "体检评分是怎么算的？",
+          "acceptedAnswer": { "@type": "Answer", "text": "满分 100，按严重程度扣分：低 3 分、中 12 分、高 30 分、严重 60 分。100 分表示没有发现问题。风险等级取最严重的那一项；所有报告都可以导出 JSON。" }
+        },
+        {
+          "@type": "Question",
+          "name": "ZipFlow 能创建哪些格式？",
+          "acceptedAnswer": { "@type": "Answer", "text": "支持 7 种容器：ZIP（默认）、7z、TAR、TAR.GZ、TAR.BZ2、TAR.XZ 和 TAR.ZST。ZIP 支持 Zip64、Deflate 1–9 级、AES-256 加密以及可选的 Zopfli 极限压缩。每个选项都会标注接收方能否直接打开。" }
+        },
+        {
+          "@type": "Question",
+          "name": "支持命令行吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "支持。安装版提供 zf 命令，源码运行使用 python -m zipflow --cli。命令覆盖创建、解压、列表、测试、推荐、体检和本地 API。发现严重的路径穿越或符号链接逃逸时返回退出码 3，可直接用于 CI 卡点。" }
+        },
+        {
+          "@type": "Question",
+          "name": "支持哪些 Windows 版本？",
+          "acceptedAnswer": { "@type": "Answer", "text": "ZipFlow 1.0.0 支持 64 位 Windows 10 1809 及以上版本，以及 Windows 11。微软商店提供 MSIX 安装包，GitHub 提供免安装版本。" }
+        },
+        {
+          "@type": "Question",
+          "name": "为什么默认用 ZIP，而不是压缩率更高的 7z？",
+          "acceptedAnswer": { "@type": "Answer", "text": "ZIP 在 Windows 资源管理器、macOS、Office、手机和云盘上都能直接打开，接收方不需要装任何软件。7z 通常更小，但对方需要 7-Zip 或兼容工具。ZipFlow 默认选兼容性最好的格式，需要更小体积时可以显式选 7z。" }
+        },
+        {
+          "@type": "Question",
+          "name": "ZipFlow 开源吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "开源。ZipFlow 以 LGPL-3.0 开源许可证发布；许可证文本在仓库中，第三方组件声明随应用提供。" }
+        },
+        {
+          "@type": "Question",
+          "name": "可以在脚本或 CI 里使用吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "可以。zf s archive.zip --json 输出机器可读的体检报告；发现严重的路径穿越或符号链接逃逸时返回退出码 3，可让构建失败。其他发现可以解析 JSON 后按自己的阈值处理。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="zh.html" aria-label="ZipFlow 首页">
+      <img src="assets/img/logo.svg" alt="" width="32" height="32">
+      <span>
+        <span class="brand-name">ZipFlow</span>
+        <span class="brand-sub">汇压缩</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <ul class="nav-links" id="primary-nav">
+        <li><a href="#safety">安全体检</a></li>
+        <li><a href="#compression">智能压缩</a></li>
+        <li><a href="#cli">命令行 / API</a></li>
+        <li><a href="#formats">支持格式</a></li>
+        <li><a href="privacy.html">隐私</a></li>
+      </ul>
+      <a class="lang-switch" href="index.html" hreflang="en" lang="en">EN</a>
+      <a class="btn btn-primary btn-sm" href="#download">下载</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="展开导航">
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Windows 10 / 11 · 版本 1.0.0</p>
+        <h1>解压之前，<br>先知道它<em>安不安全</em>。</h1>
+        <p class="lede">ZipFlow 不急着把文件写进磁盘。它先读压缩包的目录结构，做 7 项安全检测，用一张 0–100 分的报告告诉你风险在哪；再根据文件构成，推荐真正合适的压缩方案。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#download">下载 Windows 版</a>
+          <a class="btn btn-dark-ghost" href="#safety">查看 7 项检测</a>
+        </div>
+        <ul class="hero-meta">
+          <li>免费开源</li>
+          <li>无需账号</li>
+          <li>零遥测</li>
+          <li>LGPL-3.0</li>
+        </ul>
+      </div>
+      <div class="hero-art">
+        <span class="float-chip one">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          解压前 7 项检测
+        </span>
+        <span class="float-chip two">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          上传 0 字节
+        </span>
+        <figure class="shot-card">
+          <img src="assets/img/screenshot-health-report.png" alt="ZipFlow 压缩包体检报告：tar.gz 文件被标记为高风险，评分 70/100，完整性检测发现异常。" width="950" height="738" fetchpriority="high">
+          <figcaption class="shot-caption"><span class="dot"></span> 压缩包体检报告 · 7 项检测 · 可导出 JSON</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="trustbar">
+    <div class="container trustbar-inner">
+      <span><b>30+</b> 种格式读取</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span><b>7</b> 种容器写入</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span><b>GUI + CLI + API</b> 同一引擎</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span><b>ZIP64 · AES-256</b> 原生支持</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span><b>0</b> 次网络请求</span>
+    </div>
+  </div>
+
+  <section class="section" id="what">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">这是什么</span>
+        <h2>先把问题回答清楚，再动手解压。</h2>
+      </div>
+      <p class="answer"><strong>ZipFlow（汇压缩）是一款免费、本地优先的 Windows 压缩解压软件。</strong>它在解压前检查 ZIP、7z、RAR（需 7-Zip）、TAR 等 30+ 种压缩包，报告 7 类安全风险；压缩前根据文件构成推荐格式、方法与档位。全部功能在本机完成，不联网。</p>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v5c0 4.4-2.9 8.2-7 9.5C7.9 19.2 5 15.4 5 11V6l7-3z"/><path d="M8.8 11.6l2.2 2.2 4.2-4.4"/></svg>
+          </span>
+          <h3>解压前先体检</h3>
+          <p>7 项检测直接读压缩包索引。路径穿越和符号链接逃逸默认拦截；其余问题会列出具体条目名，由你决定怎么处理。</p>
+        </article>
+        <article class="card">
+          <span class="icon green" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V9M10 19V5M16 19v-7M22 19V3"/></svg>
+          </span>
+          <h3>压缩前先推荐</h3>
+          <p>先采样文件构成，再给出容器、方法与档位，并预估节省空间和耗时。不用猜参数，也不用拿 CPU 试错。</p>
+        </article>
+        <article class="card">
+          <span class="icon amber" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l2 2-2 2M12 15h5"/></svg>
+          </span>
+          <h3>一个引擎，三种入口</h3>
+          <p>图形界面、<code>zf</code> 命令行和本地 HTTP API 调用同一个核心。行为、错误码和安全策略完全一致。</p>
+        </article>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat"><b>7</b><span>项安全检测，一个 0–100 评分</span></div>
+        <div class="stat"><b>30+</b><span>种可读取的压缩格式</span></div>
+        <div class="stat"><b>0</b><span>次网络请求，设计如此</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-paper" id="safety">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">压缩包体检报告</span>
+        <h2>7 项检测，一个评分，一份能交给 CI 的报告。</h2>
+        <p>压缩包本质上是一个由发送方控制的小型文件系统，里面有路径、链接和大小。ZipFlow 在写入第一个字节之前，先把这些元数据读完。</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption class="sr-only">ZipFlow 的 7 项压缩包安全检测</caption>
+          <thead>
+            <tr>
+              <th scope="col">检测项</th>
+              <th scope="col">查什么</th>
+              <th scope="col">默认动作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>路径穿越</strong><span class="sub">Zip Slip · CWE-22</span></td>
+              <td>解压后路径逃出目标目录的条目：<code>../</code>、绝对路径、盘符、UNC 路径。</td>
+              <td><span class="tag high">拦截</span></td>
+            </tr>
+            <tr>
+              <td><strong>符号链接逃逸</strong><span class="sub">先建链接再写入</span></td>
+              <td>指向解压目录之外的符号链接，以及随后借它写入的条目。</td>
+              <td><span class="tag high">拦截</span></td>
+            </tr>
+            <tr>
+              <td><strong>压缩炸弹</strong><span class="sub">资源耗尽</span></td>
+              <td>异常膨胀比、超大的声明解压体积，或可能耗尽磁盘和内存的条目数量。</td>
+              <td><span class="tag medium">标记</span></td>
+            </tr>
+            <tr>
+              <td><strong>弱加密</strong><span class="sub">ZipCrypto</span></td>
+              <td>使用旧式 ZipCrypto 而非 AES-256、参数过时，或无法校验的加密条目。</td>
+              <td><span class="tag medium">标记</span></td>
+            </tr>
+            <tr>
+              <td><strong>完整性异常</strong><span class="sub">截断 · CRC</span></td>
+              <td>缺少中央目录结束记录、数据截断、CRC 不匹配、大小字段前后矛盾。</td>
+              <td><span class="tag medium">标记</span></td>
+            </tr>
+            <tr>
+              <td><strong>内嵌可执行文件</strong><span class="sub">双击风险</span></td>
+              <td><code>.exe</code>、<code>.scr</code>、<code>.bat</code>、<code>.cmd</code>、<code>.ps1</code>、<code>.lnk</code>、<code>.js</code>，以及带宏的 Office 文件。</td>
+              <td><span class="tag low">标记</span></td>
+            </tr>
+            <tr>
+              <td><strong>重复 / 大小写冲突</strong><span class="sub">覆盖把戏</span></td>
+              <td>同一路径出现两次，或在 Windows 不区分大小写的卷上会互相覆盖的文件名。</td>
+              <td><span class="tag low">标记</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="split" style="margin-top:44px">
+        <div class="copy">
+          <h3 style="font-size:22px">评分怎么读</h3>
+          <p>报告从 <strong>100</strong> 分开始。每发现一个问题，按严重程度扣分：低 3 分、中 12 分、高 30 分、严重 60 分。100 分表示没有发现问题。</p>
+          <p>风险等级取<strong>最严重的那一项</strong>，而不是平均分。所以一份报告可能只有 70 分却标成高风险，因为某一项完整性检测失败了，就像上方截图那样。</p>
+          <p class="small">每份报告都能导出 JSON，包含条目名、严重程度、各项检测结果和跳过原因，可以直接接进构建流程或工单系统。</p>
+        </div>
+        <div class="terminal" aria-label="JSON 体检报告示例">
+          <div class="terminal-bar"><i></i><i></i><i></i><span>zf s archive.zip --json</span></div>
+          <pre><code>{
+  <span class="k">"format"</span>: <span class="g">"zip"</span>,
+  <span class="k">"entry_count"</span>: 105,
+  <span class="k">"risk_level"</span>: <span class="r">"high"</span>,
+  <span class="k">"score"</span>: 70,
+  <span class="k">"findings"</span>: [
+    {
+      <span class="k">"check"</span>: <span class="g">"integrity"</span>,
+      <span class="k">"severity"</span>: <span class="w">"high"</span>,
+      <span class="k">"title"</span>: <span class="g">"完整性异常"</span>
+    }
+  ],
+  <span class="k">"checks_skipped"</span>: {}
+}</code></pre>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top:28px"><strong>它不是杀毒软件。</strong>ZipFlow 检查压缩包结构与解压攻击模式，不查病毒特征，也不扫描文件内容。请继续开启 Windows 安全中心或其他杀毒软件，并把干净的体检报告视为一个信号，而不是保证。</p>
+    </div>
+  </section>
+
+  <section class="section" id="compression">
+    <div class="container">
+      <div class="split">
+        <div class="copy">
+          <span class="kicker">智能压缩</span>
+          <h2 style="font-size:clamp(28px,3.4vw,40px)">格式和档位，用文件本身来回答。</h2>
+          <p>大多数工具让你自己选格式、方法和级别，然后祈祷结果合适。ZipFlow 先采样，判断里面主要是源码、文档、图片、视频、已压缩媒体还是二进制文件。</p>
+          <p>推荐结果包含容器、方法、级别、预计节省空间和预计耗时。每个选项都会标明谁能直接打开：</p>
+          <ul class="checklist" style="margin-bottom:24px">
+            <li><strong>★ 全市场通吃</strong> —— 资源管理器、macOS、Office、手机、云盘都能开</li>
+            <li><strong>◐ 需要较新系统</strong> —— 例如 TAR.ZST 需要 Windows 11 24H2+</li>
+            <li><strong>!</strong> <strong>需要 7-Zip</strong> —— 体积更小，但接收方得装工具</li>
+          </ul>
+          <p>在任何创建命令后加上 <code>--info</code>，就能在<em>不写文件</em>的情况下看到方案、剩余磁盘空间和预计结果。</p>
+        </div>
+        <div>
+          <div class="terminal">
+            <div class="terminal-bar"><i></i><i></i><i></i><span>zf r ./project --prefer auto</span></div>
+            <pre><code><span class="p">推荐：</span>ZIP / deflate 级别 9（极限压缩）
+<span class="g">★ 全市场通吃</span> —— Windows 资源管理器、macOS、Office、
+  手机、云盘，无需安装任何软件。
+<span class="k">理由：</span>以文本和源码为主：ZIP + Deflate 最高级别。
+  比 7z 略大一点，但谁都能双击打开。
+<span class="k">预计节省：</span>80.6%（194.83 KB -&gt; 37.72 KB）
+<span class="k">预计耗时：</span>0 秒
+<span class="k">内容构成：</span>文本文档 8</code></pre>
+          </div>
+          <div class="terminal" style="margin-top:18px">
+            <div class="terminal-bar"><i></i><i></i><i></i><span>zf a big.zip ./data --info</span></div>
+            <pre><code><span class="p">★ 全市场通吃</span>
+archive : big.zip
+format  : zip  method=(default) level=9 zopfli=False
+sources : 194.83 KB in 8 file(s)
+free    : 83.90 GB
+<span class="g">预计结果：37.72 KB（80.6%），耗时约 0 秒</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-paper" id="screenshots">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">界面</span>
+        <h2>真实截图，不是效果图。</h2>
+        <p>ZipFlow 1.0.0 在 Windows 11 上的实际界面。支持中英文，运行时切换。</p>
+      </div>
+      <div class="gallery">
+        <figure>
+          <img src="assets/img/screenshot-create-archive.png" alt="ZipFlow 新建压缩包窗口：格式选择 ZIP，Deflate 级别 9，并提供“推荐格式”按钮。" width="803" height="509" loading="lazy" decoding="async">
+          <figcaption><b>新建压缩包。</b>格式选择器会标注互操作性，“推荐格式”根据采样自动填好参数。</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/screenshot-archive-open.png" alt="ZipFlow 浏览 tar.gz 压缩包：文件树、大小、CRC 列和右侧信息面板。" width="1349" height="910" loading="lazy" decoding="async">
+          <figcaption><b>不解压也能浏览。</b>文件树、原始与压缩后大小、压缩比、CRC、加密标记和格式信息。</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/screenshot-extract.png" alt="ZipFlow 解压窗口：目标目录、子文件夹选项和覆盖策略。" width="702" height="318" loading="lazy" decoding="async">
+          <figcaption><b>带策略解压。</b>目标目录、按压缩包建子文件夹、覆盖策略、仅解压选中项。</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/screenshot-select-files.png" alt="ZipFlow 选择要压缩的内容窗口：文件列表，以及添加文件、添加文件夹、清空选择按钮。" width="1122" height="757" loading="lazy" decoding="async">
+          <figcaption><b>文件和文件夹混选。</b>大文件按 1 MiB 分块流式写入，内存不随体积增长，取消随时生效。</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark" id="cli">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">GUI · CLI · API</span>
+        <h2>一个引擎，三种用法。</h2>
+        <p>引擎层不依赖 Qt。所以桌面界面、<code style="background:#132139;border-color:#243752;color:#c9d6e8">zf</code> 命令和 HTTP API 的行为与错误信息完全一致。</p>
+      </div>
+
+      <div class="split">
+        <div class="copy">
+          <ul class="checklist">
+            <li><strong>图形界面</strong> —— 拖入压缩包，打开体检报告，导出 JSON</li>
+            <li><strong>命令行</strong> —— 创建、解压、列表、测试、推荐、体检、启动服务</li>
+            <li><strong>本地 API</strong> —— FastAPI 绑定 <code style="background:#132139;border-color:#243752;color:#c9d6e8">127.0.0.1</code>，需要 Bearer Token</li>
+            <li><strong>JSON 输出</strong> —— 体检报告和推荐结果可接自动化</li>
+            <li><strong>稳定退出码</strong> —— 0 成功，1 一般错误，2 参数错误，3 安全拦截，4 密码错误，5 缺少 7-Zip</li>
+          </ul>
+          <p style="margin-top:24px;color:#a9b7cc">即使忽略报告，核心层仍会强制做路径安全检查：所有落盘写入都要经过 <code style="background:#132139;border-color:#243752;color:#c9d6e8">SecurityGuard</code>。</p>
+        </div>
+        <div class="terminal">
+          <div class="terminal-bar"><i></i><i></i><i></i><span>zf — 命令行</span></div>
+          <pre><code><span class="c"># 解压前体检；JSON 给 CI 用</span>
+zf s suspicious.zip --json
+
+<span class="c"># 默认产物：ZIP + Deflate L9</span>
+zf a dist.zip ./src
+
+<span class="c"># 体积更小，但接收方需要 7-Zip</span>
+zf a dist.7z ./src -f 7z
+
+<span class="c"># 只看方案，不写文件</span>
+zf a big.zip ./data --info
+
+<span class="c"># 解压、推荐、完整性测试</span>
+zf x dist.zip -o ./out
+zf r ./src --prefer auto
+zf t dist.zip
+
+<span class="c"># 本地 API（Bearer Token）</span>
+zf serve --port 8765</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="formats">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">格式支持</span>
+        <h2>读 30+ 种，写最常用的 7 种。</h2>
+        <p>默认 ZIP，是因为接收方不应该为了打开一个包再装软件。需要更小体积、更快速度或符合平台习惯时，再选其它容器。</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption class="sr-only">ZipFlow 支持的压缩格式</caption>
+          <thead>
+            <tr>
+              <th scope="col">分组</th>
+              <th scope="col">格式</th>
+              <th scope="col">方向</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>默认 · 全市场通吃</strong><span class="sub">★ 到处都能开</span></td>
+              <td>ZIP —— Zip64、Deflate 1–9、AES-256、可选 Zopfli</td>
+              <td><span class="tag pass">读 / 写</span></td>
+            </tr>
+            <tr>
+              <td><strong>体积最小</strong><span class="sub">! 接收方需要 7-Zip</span></td>
+              <td>7z —— 固实字典、LZMA2</td>
+              <td><span class="tag pass">读 / 写</span></td>
+            </tr>
+            <tr>
+              <td><strong>Unix 标准</strong></td>
+              <td>TAR、TAR.GZ、TAR.BZ2、TAR.XZ</td>
+              <td><span class="tag pass">读 / 写</span></td>
+            </tr>
+            <tr>
+              <td><strong>高速 · 较新系统</strong><span class="sub">◐ Windows 11 24H2+ 或 7-Zip 22.04+</span></td>
+              <td>TAR.ZST、Zstandard</td>
+              <td><span class="tag pass">读 / 写</span></td>
+            </tr>
+            <tr>
+              <td><strong>仅读取</strong><span class="sub">RAR 算法专有，不能创建</span></td>
+              <td>RAR、ISO、CAB、DMG、LZ、CPIO、RPM、DEB、SquashFS、NSIS、VHD/VHDX/VDI/VMDK、WIM、UDF、EXT、ARJ、LZH、CHM、PPMd、多卷、OOXML</td>
+              <td><span class="tag info">仅读取</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small" style="margin-top:14px">RAR 只读是刻意的功能边界，并且需要系统安装 7-Zip 才能读取。ZIP、7z、TAR 等格式由内置引擎处理，没有 7-Zip 也能正常使用其它功能。</p>
+    </div>
+  </section>
+
+  <section class="section section-dark" id="privacy">
+    <div class="container">
+      <div class="split">
+        <div class="copy">
+          <span class="kicker">隐私</span>
+          <h2 style="color:#fff;font-size:clamp(28px,3.4vw,40px)">没有联网能力，不是一个开关。</h2>
+          <p style="color:#a9b7cc">ZipFlow 不需要你相信某个隐私选项。微软商店安装包不声明 <code style="background:#132139;border-color:#243752;color:#c9d6e8">internetClient</code> 能力，Windows 在系统边界上直接阻断网络访问。</p>
+          <ul class="checklist" style="margin-top:22px">
+            <li>没有遥测、统计分析或崩溃上传</li>
+            <li>没有账号、云同步或广告</li>
+            <li>文件名和路径不会离开本机</li>
+            <li>设置只写入 <code style="background:#132139;border-color:#243752;color:#c9d6e8">%APPDATA%\ZipFlow\settings.json</code></li>
+          </ul>
+          <p style="margin-top:24px"><a href="privacy.html" style="color:#8ab6ff">阅读完整隐私政策 →</a></p>
+        </div>
+        <div class="terminal">
+          <div class="terminal-bar"><i></i><i></i><i></i><span>AppxManifest.xml</span></div>
+          <pre><code><span class="c">&lt;!-- 未声明 internetClient 能力 --&gt;</span>
+&lt;Capabilities&gt;
+  &lt;rescap:Capability
+    Name=<span class="g">"runFullTrust"</span> /&gt;
+&lt;/Capabilities&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="compare">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">对比</span>
+        <h2>不同的活，用不同的工具。</h2>
+        <p>7-Zip 在压缩率上很强，Windows 资源管理器胜在顺手。ZipFlow 关注的是解压之前那一刻：你还不知道这个包里到底有什么。</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption class="sr-only">ZipFlow、7-Zip 与 Windows 资源管理器对比</caption>
+          <thead>
+            <tr>
+              <th scope="col">能力</th>
+              <th scope="col">ZipFlow</th>
+              <th scope="col">7-Zip</th>
+              <th scope="col">Windows 资源管理器</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>价格</strong></td><td>免费，LGPL-3.0</td><td>免费，LGPL</td><td>随 Windows 提供</td></tr>
+            <tr><td><strong>压缩包体检</strong></td><td><span class="tag pass">7 项 + 评分</span></td><td>无</td><td>无</td></tr>
+            <tr><td><strong>压缩方案推荐</strong></td><td><span class="tag pass">格式、档位、节省、耗时</span></td><td>手动设置</td><td>无</td></tr>
+            <tr><td><strong>可写格式</strong></td><td>7 种容器</td><td>多种，含 7z 与 ZIP</td><td>仅 ZIP</td></tr>
+            <tr><td><strong>CLI + 本地 API</strong></td><td>有，同一引擎</td><td>有 CLI，无 API</td><td>无</td></tr>
+            <tr><td><strong>遥测</strong></td><td>无，且无联网能力</td><td>无</td><td>受系统遥测设置影响</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:20px"><a href="compare.html">查看完整对比，包括什么情况下应该选 7-Zip →</a></p>
+    </div>
+  </section>
+
+  <section class="section section-paper" id="faq">
+    <div class="container">
+      <div class="section-head center">
+        <span class="kicker">常见问题</span>
+        <h2>安装之前，大家会问这些。</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>ZipFlow 是免费的吗？</summary>
+          <div class="faq-body"><p>是。ZipFlow 免费下载、免费使用，没有账号、广告、内购或功能次数限制。许可证为 LGPL-3.0，许可证文本随仓库提供。</p></div>
+        </details>
+        <details>
+          <summary>ZipFlow 会收集我的数据吗？</summary>
+          <div class="faq-body"><p>不会。ZipFlow 没有遥测、统计分析或云同步。微软商店安装包不声明 <code>internetClient</code> 能力，Windows 在系统层面阻止联网。文件、文件名和压缩包路径都不会离开本机。</p></div>
+        </details>
+        <details>
+          <summary>ZipFlow 能解压 RAR 吗？</summary>
+          <div class="faq-body"><p>RAR 可以列出和解压，但需要系统安装 7-Zip：RAR 压缩算法专有，ZipFlow 通过外部 7-Zip 引擎读取。不支持创建 RAR。ZIP、7z、TAR 等内置格式无需 7-Zip 即可使用。</p></div>
+        </details>
+        <details>
+          <summary>ZipFlow 能代替杀毒软件吗？</summary>
+          <div class="faq-body"><p>不能。ZipFlow 检查的是压缩包结构和已知的解压攻击模式，不查病毒特征，也不扫描文件内容。请继续开启 Windows 安全中心或其他杀毒软件，并把干净的体检报告视为一个信号，而不是保证。</p></div>
+        </details>
+        <details>
+          <summary>体检评分是怎么算的？</summary>
+          <div class="faq-body"><p>满分 100，按严重程度扣分：低 3 分、中 12 分、高 30 分、严重 60 分。100 分表示没有发现问题。风险等级取最严重的那一项；所有报告都可以导出 JSON。</p></div>
+        </details>
+        <details>
+          <summary>ZipFlow 能创建哪些格式？</summary>
+          <div class="faq-body"><p>支持 7 种容器：ZIP（默认）、7z、TAR、TAR.GZ、TAR.BZ2、TAR.XZ 和 TAR.ZST。ZIP 支持 Zip64、Deflate 1–9 级、AES-256 加密以及可选的 Zopfli 极限压缩。每个选项都会标注接收方能否直接打开。</p></div>
+        </details>
+        <details>
+          <summary>支持命令行吗？</summary>
+          <div class="faq-body"><p>支持。安装版提供 <code>zf</code> 命令，源码运行使用 <code>python -m zipflow --cli</code>。命令覆盖创建、解压、列表、测试、推荐、体检和本地 API。发现严重的路径穿越或符号链接逃逸时返回退出码 3，可直接用于 CI 卡点。</p></div>
+        </details>
+        <details>
+          <summary>支持哪些 Windows 版本？</summary>
+          <div class="faq-body"><p>ZipFlow 1.0.0 支持 64 位 Windows 10 1809 及以上版本，以及 Windows 11。微软商店提供 MSIX 安装包，GitHub 提供免安装版本。</p></div>
+        </details>
+        <details>
+          <summary>为什么默认用 ZIP，而不是压缩率更高的 7z？</summary>
+          <div class="faq-body"><p>ZIP 在 Windows 资源管理器、macOS、Office、手机和云盘上都能直接打开，接收方不需要装任何软件。7z 通常更小，但对方需要 7-Zip 或兼容工具。ZipFlow 默认选兼容性最好的格式，需要更小体积时可以显式选 7z。</p></div>
+        </details>
+        <details>
+          <summary>ZipFlow 开源吗？</summary>
+          <div class="faq-body"><p>开源。ZipFlow 以 LGPL-3.0 开源许可证发布；许可证文本在仓库中，第三方组件声明随应用提供。</p></div>
+        </details>
+        <details>
+          <summary>可以在脚本或 CI 里使用吗？</summary>
+          <div class="faq-body"><p>可以。<code>zf s archive.zip --json</code> 输出机器可读的体检报告；发现严重的路径穿越或符号链接逃逸时返回退出码 3，可让构建失败。其他发现可以解析 JSON 后按自己的阈值处理。</p></div>
+        </details>
+      </div>
+      <p class="small center" style="margin-top:24px">最后更新：2026 年 11 月 3 日 · 适用于 ZipFlow 1.0.0</p>
+    </div>
+  </section>
+
+  <section class="section-tight" id="download" style="padding-top:0">
+    <div class="container">
+      <div class="grid grid-3" style="margin-top:56px">
+        <article class="card">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
+          </span>
+          <h3>微软商店</h3>
+          <p>MSIX 安装，自动更新。1.0.0 版本正在陆续上架，可在商店应用中搜索 ZipFlow。</p>
+          <p style="margin-top:14px"><a class="btn btn-primary btn-sm" href="https://apps.microsoft.com/search?query=ZipFlow" rel="noopener">打开商店搜索</a></p>
+        </article>
+        <article class="card">
+          <span class="icon green" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
+          </span>
+          <h3>免安装版</h3>
+          <p>不写注册表，不需要安装程序。从 GitHub Releases 下载最新 onedir 包，直接运行 <code>ZipFlow.exe</code>。</p>
+          <p style="margin-top:14px"><a class="btn btn-ghost btn-sm" href="https://github.com/lijiannan1241/ZipFlow/releases" rel="noopener">GitHub Releases</a></p>
+        </article>
+        <article class="card">
+          <span class="icon amber" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/></svg>
+          </span>
+          <h3>项目与许可证</h3>
+          <p>许可证文本、版本说明和问题追踪都在 GitHub。ZipFlow 以 LGPL-3.0 发布。</p>
+          <p style="margin-top:14px"><a class="btn btn-ghost btn-sm" href="https://github.com/lijiannan1241/ZipFlow" rel="noopener">查看项目</a></p>
+        </article>
+      </div>
+      <p class="small" style="margin-top:22px">系统要求：64 位 Windows 10 1809 及以上，或 Windows 11。MSIX 下载体积 53.9 MB；免安装版约占 130 MB 磁盘空间。版本 1.0.0。</p>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <h2>下一个压缩包，先听第二意见。</h2>
+        <p>免费、离线，而且愿意把判断依据摊开给你看。</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="#download">下载 ZipFlow</a>
+        <a class="btn btn-dark-ghost" href="https://apps.microsoft.com/search?query=ZipFlow" rel="noopener" target="_blank">
+          <img src="assets/img/ms-store-badge-en.png" alt="Microsoft Store で入手" height="28">
+        </a>
+        <a class="btn btn-dark-ghost" href="safe-unzip.html">阅读安全解压指南</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="zh.html" aria-label="ZipFlow 首页">
+          <img src="assets/img/logo.svg" alt="" width="32" height="32">
+          <span>
+            <span class="brand-name">ZipFlow</span>
+            <span class="brand-sub">汇压缩</span>
+          </span>
+        </a>
+        <p>面向 Windows 的本地优先压缩工具。解压前先看安全，压缩前先看方案，所有字节都留在本机。</p>
+      </div>
+      <div class="footer-col">
+        <h3>产品</h3>
+        <ul>
+          <li><a href="#safety">安全体检</a></li>
+          <li><a href="#compression">智能压缩</a></li>
+          <li><a href="#formats">支持格式</a></li>
+          <li><a href="#download">下载</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>阅读</h3>
+        <ul>
+          <li><a href="safe-unzip.html">安全解压指南</a></li>
+          <li><a href="compare.html">工具对比</a></li>
+          <li><a href="index.html" hreflang="en" lang="en">English page</a></li>
+          <li><a href="llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>项目</h3>
+        <ul>
+          <li><a href="https://github.com/lijiannan1241/ZipFlow" rel="noopener">GitHub</a></li>
+          <li><a href="https://github.com/lijiannan1241/ZipFlow/issues" rel="noopener">问题反馈</a></li>
+          <li><a href="privacy.html">隐私政策</a></li>
+          <li><a href="https://www.gnu.org/licenses/lgpl-3.0.html" rel="noopener">LGPL-3.0</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ZipFlow。ZipFlow 与 7-Zip、WinRAR、WinZip、PeaZip、NanaZip、Bandizip 无任何关联。</p>
+      <p>为 Windows 10 / 11 构建 · <a href="index.html" hreflang="en" lang="en" style="color:#9fb0c8">English</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

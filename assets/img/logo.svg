@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ZipFlow logo">
+  <defs>
+    <linearGradient id="zf-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3A7EEA"/>
+      <stop offset="1" stop-color="#1F5BC0"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14.4" fill="url(#zf-bg)"/>
+  <rect x="14.75" y="18.75" width="34.5" height="25" rx="2.75" fill="#ffffff"/>
+  <path d="M14.75 21.5a2.75 2.75 0 0 1 2.75-2.75h29a2.75 2.75 0 0 1 2.75 2.75v5.25h-34.5z" fill="#dbe9ff"/>
+  <rect x="31" y="26.5" width="2" height="11.9" rx="1" fill="#2a6fdb"/>
+  <g fill="#2a6fdb">
+    <rect x="28.4" y="27.75" width="1.9" height="0.8" rx="0.3"/>
+    <rect x="33.7" y="28.6" width="1.9" height="0.8" rx="0.3"/>
+    <rect x="28.4" y="29.65" width="1.9" height="0.8" rx="0.3"/>
+    <rect x="33.7" y="30.5" width="1.9" height="0.8" rx="0.3"/>
+    <rect x="28.4" y="31.55" width="1.9" height="0.8" rx="0.3"/>
+    <rect x="33.7" y="32.4" width="1.9" height="0.8" rx="0.3"/>
+    <rect x="28.4" y="33.45" width="1.9" height="0.8" rx="0.3"/>
+    <rect x="33.7" y="34.3" width="1.9" height="0.8" rx="0.3"/>
+  </g>
+  <path d="M45.75 34.25c2.6 1.1 5.05 1.55 7.4 1.6l-.7 8.6c-.25 2.9-3.1 4.6-6.7 6.1-3.6-1.5-6.45-3.2-6.7-6.1l-.7-8.6c2.35-.05 4.8-.5 7.4-1.6z" fill="#12a150"/>
+  <path d="M41.8 45.7l2.7 2.7 5.3-6.1" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

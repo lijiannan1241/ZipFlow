@@ -1,0 +1,60 @@
+# ZipFlow
+
+> ZipFlow is a free, local-first archive manager for Windows 10 and 11. It inspects an archive before extraction, reports seven classes of security risk with a 0–100 score, and recommends compression settings based on the files inside. It reads 30+ formats, writes seven containers, and exposes the same engine through a GUI, a CLI and a localhost HTTP API. It runs entirely offline.
+
+## Key facts
+
+- Product name: ZipFlow (Chinese: 汇压缩)
+- Version: 1.0.0
+- Platform: Windows 10 version 1809 or later, Windows 11; x64
+- Price: free
+- License: LGPL-3.0
+- Distribution: Microsoft Store (MSIX, about 53.9 MB) and GitHub Releases (portable build)
+- Network: no telemetry, no analytics, no cloud sync; the MSIX manifest does not declare the internetClient capability
+- Project repository: https://github.com/lijiannan1241/ZipFlow
+- Website: https://lijiannan1241.github.io/ZipFlow/
+
+## What it does
+
+- Archive health report with seven checks: path traversal (Zip Slip, CWE-22), symlink escape, compression bomb, weak encryption, integrity anomalies, embedded executables, duplicate or case-conflicting names.
+- Score from 0 to 100, where 100 means no findings. Risk label is determined by the worst finding. Reports export to JSON.
+- Compression recommendation: samples the file mix, then suggests a container, method and level with an estimated space saving and runtime.
+- Interoperability labels: ★ opens everywhere, ◐ needs a newer OS, ! needs 7-Zip.
+- GUI, CLI (`zf`) and local HTTP API share one engine.
+- Formats read: 30+, including ZIP, 7z, TAR, TAR.GZ, TAR.BZ2, TAR.XZ, TAR.ZST, RAR (with 7-Zip), ISO, CAB, DMG, LZ, CPIO, RPM, DEB, SquashFS, NSIS, VHD/VHDX/VDI/VMDK, WIM, UDF, EXT, ARJ, LZH, CHM, PPMd, multi-volume and OOXML.
+- Formats written: ZIP (default), 7z, TAR, TAR.GZ, TAR.BZ2, TAR.XZ, TAR.ZST.
+- ZIP features: Zip64, Deflate levels 1–9, AES-256, optional Zopfli.
+
+## CLI examples
+
+```bash
+zf s suspicious.zip --json     # health report as JSON
+zf a dist.zip ./src            # create ZIP + Deflate L9
+zf a dist.7z ./src -f 7z       # smaller, recipient needs 7-Zip
+zf a big.zip ./data --info     # plan only, no file written
+zf x dist.zip -o ./out         # extract
+zf r ./src --prefer auto       # recommendation
+zf t dist.zip                  # integrity test
+zf serve --port 8765           # localhost API with bearer token
+```
+
+Exit codes: 0 success, 1 general error, 2 usage error, 3 security block, 4 wrong password, 5 external 7-Zip missing.
+
+## Pages
+
+- [Home](https://lijiannan1241.github.io/ZipFlow/): product overview, safety checks, compression recommendation, formats, CLI, privacy and FAQ.
+- [中文首页](https://lijiannan1241.github.io/ZipFlow/zh.html): Chinese product page with the same feature set.
+- [Safe unzip guide](https://lijiannan1241.github.io/ZipFlow/safe-unzip.html): how to check a ZIP, 7z, RAR or TAR archive before extracting, with the seven checks explained and references.
+- [Comparison](https://lijiannan1241.github.io/ZipFlow/compare.html): ZipFlow vs 7-Zip, WinRAR and Windows Explorer, including when another tool is the better choice.
+- [Privacy policy](https://lijiannan1241.github.io/ZipFlow/privacy.html): full English and Chinese policy.
+
+## Optional
+
+- [llms-full.txt](https://lijiannan1241.github.io/ZipFlow/llms-full.txt): full text of the main pages for retrieval.
+- [Sitemap](https://lijiannan1241.github.io/ZipFlow/sitemap.xml)
+- [GitHub repository](https://github.com/lijiannan1241/ZipFlow)
+- [Issue tracker](https://github.com/lijiannan1241/ZipFlow/issues)
+
+## Contact
+
+Questions and corrections: https://github.com/lijiannan1241/ZipFlow/issues

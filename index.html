@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZipFlow — Check if an archive is safe before you extract it</title>
+<meta name="description" content="Free local-first archive tool for Windows. Scan ZIP, 7z, RAR and TAR for Zip Slip, compression bombs and weak encryption before extraction. 30+ formats, no telemetry.">
+<link rel="canonical" href="https://lijiannan1241.github.io/ZipFlow/">
+<link rel="alternate" hreflang="en" href="https://lijiannan1241.github.io/ZipFlow/">
+<link rel="alternate" hreflang="zh-CN" href="https://lijiannan1241.github.io/ZipFlow/zh.html">
+<link rel="alternate" hreflang="x-default" href="https://lijiannan1241.github.io/ZipFlow/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ZipFlow">
+<meta property="og:title" content="ZipFlow — Know before you unzip">
+<meta property="og:description" content="Seven archive safety checks, 30+ formats, and compression advice based on the files you actually have. Windows 10/11. Local only.">
+<meta property="og:url" content="https://lijiannan1241.github.io/ZipFlow/">
+<meta property="og:image" content="https://lijiannan1241.github.io/ZipFlow/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ZipFlow — Know before you unzip. A health report screenshot shows seven archive checks and a 70/100 risk score.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ZipFlow — Know before you unzip">
+<meta name="twitter:description" content="Check ZIP, 7z, RAR and TAR for Zip Slip, compression bombs and weak encryption before extracting. Free, offline, no telemetry.">
+<meta name="twitter:image" content="https://lijiannan1241.github.io/ZipFlow/assets/img/og-cover.png">
+<meta name="theme-color" content="#0a1220">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/icon-180.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" as="image" href="assets/img/screenshot-health-report.png">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://lijiannan1241.github.io/ZipFlow/#organization",
+      "name": "ZipFlow",
+      "alternateName": "汇压缩",
+      "url": "https://lijiannan1241.github.io/ZipFlow/",
+      "logo": "https://lijiannan1241.github.io/ZipFlow/assets/img/icon-512.png",
+      "sameAs": [
+        "https://github.com/lijiannan1241/ZipFlow"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://lijiannan1241.github.io/ZipFlow/#website",
+      "url": "https://lijiannan1241.github.io/ZipFlow/",
+      "name": "ZipFlow",
+      "description": "A local-first archive manager for Windows that checks archive safety before extraction and recommends compression settings.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://lijiannan1241.github.io/ZipFlow/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://lijiannan1241.github.io/ZipFlow/#software",
+      "name": "ZipFlow",
+      "alternateName": "汇压缩",
+      "applicationCategory": "UtilitiesApplication",
+      "applicationSubCategory": "File Compression and Archiving",
+      "operatingSystem": "Windows 10 (1809 or later), Windows 11",
+      "softwareVersion": "1.0.0",
+      "fileSize": "53.9MB",
+      "downloadUrl": "https://github.com/lijiannan1241/ZipFlow/releases",
+      "installUrl": "https://apps.microsoft.com/search?query=ZipFlow",
+      "license": "https://www.gnu.org/licenses/lgpl-3.0.html",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "ZipFlow is a free, local-first archive manager for Windows 10 and 11. It inspects ZIP, 7z, RAR, TAR and 25+ other formats before extraction, reports seven classes of security risk, and recommends compression settings based on the files inside. It runs entirely offline.",
+      "featureList": [
+        "7-point archive health report: path traversal, symlink escape, compression bomb, weak encryption, integrity anomalies, embedded executables, duplicate or case-conflicting names",
+        "Compression recommendation with estimated space saving and time",
+        "30+ read formats and 7 write containers",
+        "GUI, CLI and localhost HTTP API on one engine",
+        "ZIP64, AES-256 and optional Zopfli compression",
+        "Fully offline: no telemetry and no internetClient capability"
+      ],
+      "screenshot": [
+        "https://lijiannan1241.github.io/ZipFlow/assets/img/screenshot-health-report.png",
+        "https://lijiannan1241.github.io/ZipFlow/assets/img/screenshot-create-archive.png",
+        "https://lijiannan1241.github.io/ZipFlow/assets/img/screenshot-archive-open.png",
+        "https://lijiannan1241.github.io/ZipFlow/assets/img/screenshot-extract.png"
+      ],
+      "publisher": { "@id": "https://lijiannan1241.github.io/ZipFlow/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://lijiannan1241.github.io/ZipFlow/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is ZipFlow free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. ZipFlow is free to download and use, with no account, ads, in-app purchases or usage limits. It is licensed under LGPL-3.0, and the licence text is included in the repository."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does ZipFlow collect any data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. ZipFlow has no telemetry, no analytics and no cloud sync. The Microsoft Store package does not declare the internetClient capability, so Windows itself blocks network access. Your files, filenames and archive paths never leave the device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can ZipFlow open RAR files?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ZipFlow can list and extract RAR archives when 7-Zip is installed, because it uses the external 7-Zip engine to read the proprietary RAR format. RAR creation is not supported. Built-in formats such as ZIP, 7z and TAR work without 7-Zip."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does ZipFlow replace an antivirus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. ZipFlow checks archive structure and known extraction attack patterns, not malware signatures. It does not scan file contents for viruses. Keep Windows Security or another antivirus enabled, and treat a clean health report as one signal, not a guarantee."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the archive health score work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The score starts at 100. Each finding subtracts points by severity: low 3, medium 12, high 30, critical 60. A score of 100 means no issues were found. The risk label (low, medium, high or critical) comes from the most severe finding, and every report can be exported as JSON."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What formats can ZipFlow create?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ZipFlow writes seven containers: ZIP (the default), 7z, TAR, TAR.GZ, TAR.BZ2, TAR.XZ and TAR.ZST. ZIP supports Zip64, Deflate levels 1-9, AES-256 encryption and optional Zopfli compression. Each option is labelled with whether the recipient can open it without extra software."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does ZipFlow work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every feature, including the local HTTP API, runs on your machine. The API binds to 127.0.0.1 and requires a bearer token. ZipFlow makes no outbound network requests."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a command-line interface?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The packaged app exposes zf, and the source build uses python -m zipflow --cli. Commands cover create, extract, list, test, recommend, health scan and a localhost API. Exit code 3 means a critical path traversal or symlink escape was found, which can be used as a CI gate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Windows versions are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ZipFlow 1.0.0 supports 64-bit Windows 10 version 1809 or later, and Windows 11. It is distributed as an MSIX package through the Microsoft Store and as a portable build on GitHub."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does ZipFlow default to ZIP instead of 7z?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ZIP opens in Windows Explorer, macOS, Office, phones and cloud drives without installing anything. 7z usually produces smaller files, but the recipient needs 7-Zip or a compatible tool. ZipFlow defaults to the format that works everywhere and lets you choose 7z when size matters more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is ZipFlow open source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. ZipFlow is distributed under the LGPL-3.0 open-source licence. The licence text is in the repository, and third-party notices are included with the app."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use ZipFlow in CI or a script?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. zf s archive.zip --json prints a machine-readable report. The command returns exit code 3 when a critical path traversal or symlink escape is found, so it can fail a build. Other findings can be enforced with your own threshold by parsing the JSON."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="ZipFlow home">
+      <img src="assets/img/logo.svg" alt="" width="32" height="32">
+      <span>
+        <span class="brand-name">ZipFlow</span>
+        <span class="brand-sub">汇压缩</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <ul class="nav-links" id="primary-nav">
+        <li><a href="#safety">Safety checks</a></li>
+        <li><a href="safe-unzip.html">Guide</a></li>
+        <li><a href="compare.html">Compare</a></li>
+        <li><a href="#cli">CLI &amp; API</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+      <a class="lang-switch" href="zh.html" hreflang="zh-CN" lang="zh-CN">中文</a>
+      <a class="btn btn-primary btn-sm" href="#download">Download</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Windows 10 / 11 · Version 1.0.0</p>
+        <h1>Know <em>before</em> you unzip.</h1>
+        <p class="lede">ZipFlow opens an archive without extracting it, checks seven classes of risk, and tells you what it found in plain language. Then it recommends how to compress next time, based on the files you actually have.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#download">Get ZipFlow for Windows</a>
+          <a class="btn btn-dark-ghost" href="#safety">See the 7 checks</a>
+        </div>
+        <ul class="hero-meta">
+          <li>Free and open source</li>
+          <li>No account</li>
+          <li>No telemetry</li>
+          <li>LGPL-3.0</li>
+        </ul>
+      </div>
+      <div class="hero-art">
+        <span class="float-chip one">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          7 checks before extraction
+        </span>
+        <span class="float-chip two">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          0 bytes uploaded
+        </span>
+        <figure class="shot-card">
+          <img src="assets/img/screenshot-health-report.png" alt="ZipFlow archive health report showing a high-risk 70 out of 100 score, seven checks, and an integrity anomaly on a tar.gz file." width="950" height="738" fetchpriority="high">
+          <figcaption class="shot-caption"><span class="dot"></span> Archive Health Report · 7 checks · JSON export</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="trustbar">
+    <div class="container trustbar-inner">
+      <span><b>30+</b> formats read</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span><b>7</b> write containers</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span><b>GUI + CLI + API</b> one engine</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span><b>ZIP64 · AES-256</b> built in</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span><b>0</b> network calls</span>
+    </div>
+  </div>
+
+  <section class="section" id="what">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">What ZipFlow is</span>
+        <h2>An archive tool that answers the question first.</h2>
+      </div>
+      <p class="answer"><strong>ZipFlow is a free, local-first archive manager for Windows 10 and 11.</strong> It inspects ZIP, 7z, RAR (via 7-Zip), TAR and 25+ other archive formats before extraction, reports seven classes of security risk, and recommends compression settings based on the files inside. It runs entirely offline.</p>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v5c0 4.4-2.9 8.2-7 9.5C7.9 19.2 5 15.4 5 11V6l7-3z"/><path d="M8.8 11.6l2.2 2.2 4.2-4.4"/></svg>
+          </span>
+          <h3>Inspect before extract</h3>
+          <p>Seven checks run against the archive index. Path traversal and symlink escapes are blocked by default; everything else is reported with the exact entry names.</p>
+        </article>
+        <article class="card">
+          <span class="icon green" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V9M10 19V5M16 19v-7M22 19V3"/></svg>
+          </span>
+          <h3>Recommend before compress</h3>
+          <p>ZipFlow samples the file mix, then suggests a container, method and level with an estimated saving and runtime. No parameter guessing, no wasted CPU.</p>
+        </article>
+        <article class="card">
+          <span class="icon amber" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l2 2-2 2M12 15h5"/></svg>
+          </span>
+          <h3>One engine, three shells</h3>
+          <p>The GUI, the <code>zf</code> command line and the localhost HTTP API call the same core. Behaviour and errors stay consistent across all three.</p>
+        </article>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat"><b>7</b><span>security checks, one 0–100 score</span></div>
+        <div class="stat"><b>30+</b><span>archive formats readable</span></div>
+        <div class="stat"><b>0</b><span>network requests, by design</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-paper" id="safety">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Archive health report</span>
+        <h2>Seven checks. One score. A report you can hand to CI.</h2>
+        <p>A compressed file is a small filesystem with paths, links and sizes that the sender controls. ZipFlow reads that metadata before a single byte is written to disk.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption class="sr-only">The seven archive safety checks in ZipFlow</caption>
+          <thead>
+            <tr>
+              <th scope="col">Check</th>
+              <th scope="col">What ZipFlow looks for</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Path traversal</strong><span class="sub">Zip Slip · CWE-22</span></td>
+              <td>Entries whose resolved path escapes the destination: <code>../</code>, absolute paths, drive letters, UNC paths.</td>
+              <td><span class="tag high">Blocked</span></td>
+            </tr>
+            <tr>
+              <td><strong>Symlink escape</strong><span class="sub">link plus write-through</span></td>
+              <td>A symbolic link pointing outside the extraction root, followed by an entry that writes through it.</td>
+              <td><span class="tag high">Blocked</span></td>
+            </tr>
+            <tr>
+              <td><strong>Compression bomb</strong><span class="sub">resource exhaustion</span></td>
+              <td>Extreme expansion ratios, oversized declared output or entry counts that could exhaust disk or memory.</td>
+              <td><span class="tag medium">Flagged</span></td>
+            </tr>
+            <tr>
+              <td><strong>Weak encryption</strong><span class="sub">ZipCrypto</span></td>
+              <td>Legacy ZipCrypto instead of AES-256, outdated parameters, or encrypted entries that cannot be verified.</td>
+              <td><span class="tag medium">Flagged</span></td>
+            </tr>
+            <tr>
+              <td><strong>Integrity anomalies</strong><span class="sub">truncation · CRC</span></td>
+              <td>Missing end-of-central-directory, truncated data, CRC mismatches and inconsistent size fields.</td>
+              <td><span class="tag medium">Flagged</span></td>
+            </tr>
+            <tr>
+              <td><strong>Embedded executables</strong><span class="sub">double-click risk</span></td>
+              <td><code>.exe</code>, <code>.scr</code>, <code>.bat</code>, <code>.cmd</code>, <code>.ps1</code>, <code>.lnk</code>, <code>.js</code> and macro-enabled Office files.</td>
+              <td><span class="tag low">Flagged</span></td>
+            </tr>
+            <tr>
+              <td><strong>Duplicate / case conflicts</strong><span class="sub">overwrite tricks</span></td>
+              <td>Two entries with the same path, or names that collide on case-insensitive Windows volumes.</td>
+              <td><span class="tag low">Flagged</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="split" style="margin-top:44px">
+        <div class="copy">
+          <h3 style="font-size:22px">How the score works</h3>
+          <p>The report starts at <strong>100</strong>. Each finding subtracts points by severity: low 3, medium 12, high 30, critical 60. A score of 100 means no issues were found.</p>
+          <p>The risk label comes from the <strong>worst single finding</strong>, not the score. A file can score 70/100 and still be marked high risk because one integrity check failed, as in the screenshot above.</p>
+          <p class="small">Every report exports to JSON with entry names, severities, check results and skipped checks, so the same data can gate a build or feed a ticket.</p>
+        </div>
+        <div class="terminal" aria-label="Example JSON health report">
+          <div class="terminal-bar"><i></i><i></i><i></i><span>zf s archive.zip --json</span></div>
+          <pre><code>{
+  <span class="k">"format"</span>: <span class="g">"zip"</span>,
+  <span class="k">"entry_count"</span>: 105,
+  <span class="k">"risk_level"</span>: <span class="r">"high"</span>,
+  <span class="k">"score"</span>: 70,
+  <span class="k">"findings"</span>: [
+    {
+      <span class="k">"check"</span>: <span class="g">"integrity"</span>,
+      <span class="k">"severity"</span>: <span class="w">"high"</span>,
+      <span class="k">"title"</span>: <span class="g">"Integrity anomalies"</span>
+    }
+  ],
+  <span class="k">"checks_skipped"</span>: {}
+}</code></pre>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top:28px"><strong>Not an antivirus.</strong> ZipFlow inspects archive structure and extraction attack patterns. It does not scan file contents for malware signatures. Keep Windows Security or another antivirus enabled, and treat a clean report as one signal, not a guarantee.</p>
+    </div>
+  </section>
+
+  <section class="section" id="compression">
+    <div class="container">
+      <div class="split">
+        <div class="copy">
+          <span class="kicker">Smart compression</span>
+          <h2 style="font-size:clamp(28px,3.4vw,40px)">The format question, answered with evidence.</h2>
+          <p>Most tools ask you to choose a format, a method and a level, then hope for the best. ZipFlow samples the files first and classifies what is inside: source code, documents, images, video, already-compressed media, binaries.</p>
+          <p>The recommendation includes a container, a method, a level, an estimated saving and an estimated runtime. Every option is labelled with who can open it:</p>
+          <ul class="checklist" style="margin-bottom:24px">
+            <li><strong>★ Opens everywhere</strong> — Explorer, macOS, Office, phones, cloud drives</li>
+            <li><strong>◐ Needs a newer OS</strong> — for example Windows 11 24H2+ for TAR.ZST</li>
+            <li><strong>!</strong> <strong>Needs 7-Zip</strong> — smaller output, but the recipient must install a tool</li>
+          </ul>
+          <p>Add <code>--info</code> to any create command to see the plan, the free disk space and the estimated result <em>without writing a file</em>.</p>
+        </div>
+        <div>
+          <div class="terminal">
+            <div class="terminal-bar"><i></i><i></i><i></i><span>zf r ./project --prefer auto</span></div>
+            <pre><code><span class="p">Recommended:</span> ZIP / deflate level 9 (max)
+<span class="g">★ Opens everywhere</span> — Windows Explorer, macOS, Office,
+  phones, cloud drives — no extra software needed.
+<span class="k">Reason:</span> Mostly text and source code: ZIP with Deflate at the
+  highest level. Slightly larger than 7z, but anyone can open it
+  with a double click.
+<span class="k">Estimated saving:</span> 80.6% (194.83 KB -&gt; 37.72 KB)
+<span class="k">Estimated time:</span> 0s
+<span class="k">Composition:</span> text documents: 8</code></pre>
+          </div>
+          <div class="terminal" style="margin-top:18px">
+            <div class="terminal-bar"><i></i><i></i><i></i><span>zf a big.zip ./data --info</span></div>
+            <pre><code><span class="p">★ Opens everywhere</span>
+archive : big.zip
+format  : zip  method=(default) level=9 zopfli=False
+sources : 194.83 KB in 8 file(s)
+free    : 83.90 GB
+<span class="g">Estimated result: 37.72 KB (80.6%) in about 0s</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-paper" id="screenshots">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Inside the app</span>
+        <h2>Real screens, not a mockup.</h2>
+        <p>ZipFlow 1.0.0 on Windows 11. The interface is bilingual and switches at runtime.</p>
+      </div>
+      <div class="gallery">
+        <figure>
+          <img src="assets/img/screenshot-create-archive.png" alt="ZipFlow Create Archive dialog with format set to ZIP, Deflate level 9, and a Recommend Format button." width="803" height="509" loading="lazy" decoding="async">
+          <figcaption><b>Create Archive.</b> The format picker labels interoperability, and Recommend Format fills the settings from a sample.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/screenshot-archive-open.png" alt="ZipFlow browsing a tar.gz archive with a file tree, sizes, CRC column and an info panel." width="1349" height="910" loading="lazy" decoding="async">
+          <figcaption><b>Browse without extracting.</b> File tree, original and compressed sizes, ratio, CRC, encryption flag and format.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/screenshot-extract.png" alt="ZipFlow Extract Archive dialog with destination, subfolder option and overwrite policy." width="702" height="318" loading="lazy" decoding="async">
+          <figcaption><b>Extract with a policy.</b> Destination, subfolder, overwrite behaviour and selected-items-only mode.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/screenshot-select-files.png" alt="ZipFlow Select what to compress dialog listing files to add, with add files, add folders and clear selection buttons." width="1122" height="757" loading="lazy" decoding="async">
+          <figcaption><b>Mix files and folders.</b> Large inputs stream in 1 MiB chunks, so memory use stays flat and Cancel still works.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark" id="cli">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">GUI · CLI · API</span>
+        <h2>One engine. Three ways in.</h2>
+        <p>The engine layer has no Qt dependency. That is why the desktop app, the <code style="background:#132139;border-color:#243752;color:#c9d6e8">zf</code> command and the HTTP API produce the same behaviour and the same errors.</p>
+      </div>
+
+      <div class="split">
+        <div class="copy">
+          <ul class="checklist">
+            <li><strong>GUI</strong> — drop an archive, open Health Report, export JSON</li>
+            <li><strong>CLI</strong> — create, extract, list, test, recommend, scan, serve</li>
+            <li><strong>API</strong> — FastAPI on <code style="background:#132139;border-color:#243752;color:#c9d6e8">127.0.0.1</code> with a bearer token</li>
+            <li><strong>JSON output</strong> — health reports and recommendations for automation</li>
+            <li><strong>Stable exit codes</strong> — 0 ok, 1 error, 2 usage, 3 security block, 4 wrong password, 5 7-Zip missing</li>
+          </ul>
+          <p style="margin-top:24px;color:#a9b7cc">The core also enforces path safety even when you ignore the report: every write goes through a <code style="background:#132139;border-color:#243752;color:#c9d6e8">SecurityGuard</code> layer.</p>
+        </div>
+        <div class="terminal">
+          <div class="terminal-bar"><i></i><i></i><i></i><span>zf — command line</span></div>
+          <pre><code><span class="c"># scan before extracting; JSON for CI</span>
+zf s suspicious.zip --json
+
+<span class="c"># create the default: ZIP + Deflate L9</span>
+zf a dist.zip ./src
+
+<span class="c"># smaller, but the recipient needs 7-Zip</span>
+zf a dist.7z ./src -f 7z
+
+<span class="c"># plan only: no file is written</span>
+zf a big.zip ./data --info
+
+<span class="c"># extract, recommend, test</span>
+zf x dist.zip -o ./out
+zf r ./src --prefer auto
+zf t dist.zip
+
+<span class="c"># localhost API with a bearer token</span>
+zf serve --port 8765</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="formats">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Formats</span>
+        <h2>Read 30+. Write the seven that matter.</h2>
+        <p>ZipFlow defaults to ZIP because the recipient should not need to install anything. The other containers are there when size, speed or platform conventions matter more.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption class="sr-only">Archive formats supported by ZipFlow</caption>
+          <thead>
+            <tr>
+              <th scope="col">Group</th>
+              <th scope="col">Formats</th>
+              <th scope="col">Direction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Universal default</strong><span class="sub">★ opens everywhere</span></td>
+              <td>ZIP — Zip64, Deflate 1–9, AES-256, optional Zopfli</td>
+              <td><span class="tag pass">Read / write</span></td>
+            </tr>
+            <tr>
+              <td><strong>Smallest output</strong><span class="sub">! recipient needs 7-Zip</span></td>
+              <td>7z — solid dictionary, LZMA2</td>
+              <td><span class="tag pass">Read / write</span></td>
+            </tr>
+            <tr>
+              <td><strong>Unix standards</strong></td>
+              <td>TAR, TAR.GZ, TAR.BZ2, TAR.XZ</td>
+              <td><span class="tag pass">Read / write</span></td>
+            </tr>
+            <tr>
+              <td><strong>Fast, newer systems</strong><span class="sub">◐ Windows 11 24H2+ or 7-Zip 22.04+</span></td>
+              <td>TAR.ZST, Zstandard</td>
+              <td><span class="tag pass">Read / write</span></td>
+            </tr>
+            <tr>
+              <td><strong>Read-only</strong><span class="sub">RAR cannot be created: proprietary algorithm</span></td>
+              <td>RAR, ISO, CAB, DMG, LZ, CPIO, RPM, DEB, SquashFS, NSIS, VHD/VHDX/VDI/VMDK, WIM, UDF, EXT, ARJ, LZH, CHM, PPMd, multi-volume, OOXML</td>
+              <td><span class="tag info">Read only</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small" style="margin-top:14px">RAR is read-only by design and requires an installed 7-Zip engine. ZIP, 7z, TAR and the other built-in formats work without 7-Zip.</p>
+    </div>
+  </section>
+
+  <section class="section section-dark" id="privacy">
+    <div class="container">
+      <div class="split">
+        <div class="copy">
+          <span class="kicker">Privacy</span>
+          <h2 style="color:#fff;font-size:clamp(28px,3.4vw,40px)">No network capability. Not a setting.</h2>
+          <p style="color:#a9b7cc">ZipFlow does not ask you to trust a privacy toggle. The Microsoft Store package omits the <code style="background:#132139;border-color:#243752;color:#c9d6e8">internetClient</code> capability, so Windows itself prevents network access at the OS boundary.</p>
+          <ul class="checklist" style="margin-top:22px">
+            <li>No telemetry, analytics or crash uploads</li>
+            <li>No account, cloud sync or ads</li>
+            <li>No file names or paths leave the device</li>
+            <li>Settings live in <code style="background:#132139;border-color:#243752;color:#c9d6e8">%APPDATA%\ZipFlow\settings.json</code></li>
+          </ul>
+          <p style="margin-top:24px"><a href="privacy.html" style="color:#8ab6ff">Read the full privacy policy →</a></p>
+        </div>
+        <div class="terminal">
+          <div class="terminal-bar"><i></i><i></i><i></i><span>AppxManifest.xml</span></div>
+          <pre><code><span class="c">&lt;!-- no internetClient capability --&gt;</span>
+&lt;Capabilities&gt;
+  &lt;rescap:Capability
+    Name=<span class="g">"runFullTrust"</span> /&gt;
+&lt;/Capabilities&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="compare">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">How it compares</span>
+        <h2>Different job, different tool.</h2>
+        <p>7-Zip is excellent at compression. Windows Explorer is already there. ZipFlow is for the moment before you extract, when you do not yet know what the archive contains.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption class="sr-only">ZipFlow compared with 7-Zip and Windows Explorer</caption>
+          <thead>
+            <tr>
+              <th scope="col">Capability</th>
+              <th scope="col">ZipFlow</th>
+              <th scope="col">7-Zip</th>
+              <th scope="col">Windows Explorer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Price</strong></td><td>Free, LGPL-3.0</td><td>Free, LGPL</td><td>Included with Windows</td></tr>
+            <tr><td><strong>Archive health report</strong></td><td><span class="tag pass">7 checks + score</span></td><td>No</td><td>No</td></tr>
+            <tr><td><strong>Compression recommendation</strong></td><td><span class="tag pass">Format, level, saving, time</span></td><td>Manual settings</td><td>None</td></tr>
+            <tr><td><strong>Formats written</strong></td><td>7 containers</td><td>Many, including 7z and ZIP</td><td>ZIP only</td></tr>
+            <tr><td><strong>CLI + local API</strong></td><td>Yes, same engine</td><td>CLI yes; API no</td><td>No</td></tr>
+            <tr><td><strong>Telemetry</strong></td><td>None, no network capability</td><td>None</td><td>OS telemetry settings apply</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:20px"><a href="compare.html">Read the full comparison, including when to choose 7-Zip instead →</a></p>
+    </div>
+  </section>
+
+  <section class="section section-paper" id="faq">
+    <div class="container">
+      <div class="section-head center">
+        <span class="kicker">FAQ</span>
+        <h2>Questions people ask before installing.</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Is ZipFlow free?</summary>
+          <div class="faq-body"><p>Yes. ZipFlow is free to download and use, with no account, ads, in-app purchases or usage limits. It is licensed under LGPL-3.0, and the licence text is included in the repository.</p></div>
+        </details>
+        <details>
+          <summary>Does ZipFlow collect any data?</summary>
+          <div class="faq-body"><p>No. ZipFlow has no telemetry, no analytics and no cloud sync. The Microsoft Store package does not declare the <code>internetClient</code> capability, so Windows itself blocks network access. Your files, filenames and archive paths never leave the device.</p></div>
+        </details>
+        <details>
+          <summary>Can ZipFlow open RAR files?</summary>
+          <div class="faq-body"><p>ZipFlow can list and extract RAR archives when 7-Zip is installed, because it uses the external 7-Zip engine to read the proprietary RAR format. RAR creation is not supported. Built-in formats such as ZIP, 7z and TAR work without 7-Zip.</p></div>
+        </details>
+        <details>
+          <summary>Does ZipFlow replace an antivirus?</summary>
+          <div class="faq-body"><p>No. ZipFlow checks archive structure and known extraction attack patterns, not malware signatures. It does not scan file contents for viruses. Keep Windows Security or another antivirus enabled, and treat a clean health report as one signal, not a guarantee.</p></div>
+        </details>
+        <details>
+          <summary>How does the archive health score work?</summary>
+          <div class="faq-body"><p>The score starts at 100. Each finding subtracts points by severity: low 3, medium 12, high 30, critical 60. A score of 100 means no issues were found. The risk label (low, medium, high or critical) comes from the most severe finding, and every report can be exported as JSON.</p></div>
+        </details>
+        <details>
+          <summary>What formats can ZipFlow create?</summary>
+          <div class="faq-body"><p>ZipFlow writes seven containers: ZIP (the default), 7z, TAR, TAR.GZ, TAR.BZ2, TAR.XZ and TAR.ZST. ZIP supports Zip64, Deflate levels 1–9, AES-256 encryption and optional Zopfli compression. Each option is labelled with whether the recipient can open it without extra software.</p></div>
+        </details>
+        <details>
+          <summary>Does ZipFlow work offline?</summary>
+          <div class="faq-body"><p>Yes. Every feature, including the local HTTP API, runs on your machine. The API binds to <code>127.0.0.1</code> and requires a bearer token. ZipFlow makes no outbound network requests.</p></div>
+        </details>
+        <details>
+          <summary>Is there a command-line interface?</summary>
+          <div class="faq-body"><p>Yes. The packaged app exposes <code>zf</code>, and the source build uses <code>python -m zipflow --cli</code>. Commands cover create, extract, list, test, recommend, health scan and a localhost API. Exit code 3 means a critical path traversal or symlink escape was found, which can be used as a CI gate.</p></div>
+        </details>
+        <details>
+          <summary>Which Windows versions are supported?</summary>
+          <div class="faq-body"><p>ZipFlow 1.0.0 supports 64-bit Windows 10 version 1809 or later, and Windows 11. It is distributed as an MSIX package through the Microsoft Store and as a portable build on GitHub.</p></div>
+        </details>
+        <details>
+          <summary>Why does ZipFlow default to ZIP instead of 7z?</summary>
+          <div class="faq-body"><p>ZIP opens in Windows Explorer, macOS, Office, phones and cloud drives without installing anything. 7z usually produces smaller files, but the recipient needs 7-Zip or a compatible tool. ZipFlow defaults to the format that works everywhere and lets you choose 7z when size matters more.</p></div>
+        </details>
+        <details>
+          <summary>Is ZipFlow open source?</summary>
+          <div class="faq-body"><p>Yes. ZipFlow is distributed under the LGPL-3.0 open-source licence. The licence text is in the repository, and third-party notices are included with the app.</p></div>
+        </details>
+        <details>
+          <summary>Can I use ZipFlow in CI or a script?</summary>
+          <div class="faq-body"><p>Yes. <code>zf s archive.zip --json</code> prints a machine-readable report. The command returns exit code 3 when a critical path traversal or symlink escape is found, so it can fail a build. Other findings can be enforced with your own threshold by parsing the JSON.</p></div>
+        </details>
+      </div>
+      <p class="small center" style="margin-top:24px">Last reviewed: 3 November 2026 · Applies to ZipFlow 1.0.0</p>
+    </div>
+  </section>
+
+  <section class="section-tight" id="download" style="padding-top:0">
+    <div class="container">
+      <div class="grid grid-3" style="margin-top:56px">
+        <article class="card">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
+          </span>
+          <h3>Microsoft Store</h3>
+          <p>MSIX install with automatic updates. The 1.0.0 listing is rolling out; search for ZipFlow in the Store app.</p>
+          <p style="margin-top:14px"><a class="btn btn-primary btn-sm" href="https://apps.microsoft.com/search?query=ZipFlow" rel="noopener">Open Store search</a></p>
+        </article>
+        <article class="card">
+          <span class="icon green" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
+          </span>
+          <h3>Portable build</h3>
+          <p>No installer, no registry writes. Download the latest onedir build from GitHub Releases and run <code>ZipFlow.exe</code>.</p>
+          <p style="margin-top:14px"><a class="btn btn-ghost btn-sm" href="https://github.com/lijiannan1241/ZipFlow/releases" rel="noopener">GitHub Releases</a></p>
+        </article>
+        <article class="card">
+          <span class="icon amber" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/></svg>
+          </span>
+          <h3>Project &amp; licence</h3>
+          <p>Licence text, release notes and the issue tracker live on GitHub. ZipFlow is distributed under LGPL-3.0.</p>
+          <p style="margin-top:14px"><a class="btn btn-ghost btn-sm" href="https://github.com/lijiannan1241/ZipFlow" rel="noopener">View project</a></p>
+        </article>
+      </div>
+      <p class="small" style="margin-top:22px">System requirements: 64-bit Windows 10 version 1809 or later, or Windows 11. MSIX download: 53.9 MB. Portable build: about 130 MB on disk. Version 1.0.0.</p>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <h2>Open the next archive with a second opinion.</h2>
+        <p>Free, offline, and built to show its work.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="#download">Download ZipFlow</a>
+        <a class="btn btn-dark-ghost" href="https://apps.microsoft.com/search?query=ZipFlow" rel="noopener" target="_blank">
+          <img src="assets/img/ms-store-badge-en.png" alt="Get ZipFlow on Microsoft Store" height="28">
+        </a>
+        <a class="btn btn-dark-ghost" href="safe-unzip.html">Read the safe-unzip guide</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" aria-label="ZipFlow home">
+          <img src="assets/img/logo.svg" alt="" width="32" height="32">
+          <span>
+            <span class="brand-name">ZipFlow</span>
+            <span class="brand-sub">汇压缩</span>
+          </span>
+        </a>
+        <p>A local-first archive tool for Windows. Check safety before extraction, choose compression with evidence, and keep every byte on your machine.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Product</h3>
+        <ul>
+          <li><a href="#safety">Safety checks</a></li>
+          <li><a href="#compression">Smart compression</a></li>
+          <li><a href="#formats">Formats</a></li>
+          <li><a href="#download">Download</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Learn</h3>
+        <ul>
+          <li><a href="safe-unzip.html">Safe unzip guide</a></li>
+          <li><a href="compare.html">Compare tools</a></li>
+          <li><a href="zh.html" hreflang="zh-CN" lang="zh-CN">中文页面</a></li>
+          <li><a href="llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Project</h3>
+        <ul>
+          <li><a href="https://github.com/lijiannan1241/ZipFlow" rel="noopener">GitHub</a></li>
+          <li><a href="https://github.com/lijiannan1241/ZipFlow/issues" rel="noopener">Issues</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="https://www.gnu.org/licenses/lgpl-3.0.html" rel="noopener">LGPL-3.0</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ZipFlow. ZipFlow is not affiliated with 7-Zip, WinRAR, WinZip, PeaZip, NanaZip or Bandizip.</p>
+      <p>Built for Windows 10 and 11 · <a href="zh.html" hreflang="zh-CN" lang="zh-CN" style="color:#9fb0c8">简体中文</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

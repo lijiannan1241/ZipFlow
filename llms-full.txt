@@ -1,0 +1,210 @@
+# ZipFlow — full site text for retrieval
+
+Source: https://lijiannan1241.github.io/ZipFlow/
+Version: 1.0.0
+Last updated: 3 November 2026
+
+ZipFlow is a free, local-first archive manager for Windows 10 and Windows 11. It checks an archive for seven classes of security risk before extraction, scores the result from 0 to 100, and recommends compression settings based on the files inside. It reads 30+ formats, writes seven containers, and shares one engine across a GUI, a CLI and a localhost HTTP API. It runs entirely offline.
+
+## Product facts
+
+- Product name: ZipFlow. Chinese name: 汇压缩.
+- Version: 1.0.0.
+- Operating system: 64-bit Windows 10 version 1809 or later; Windows 11.
+- Price: free. No account, ads, in-app purchases or usage limits.
+- License: LGPL-3.0.
+- Distribution: Microsoft Store (MSIX, approximately 53.9 MB) and GitHub Releases (portable onedir build, approximately 130 MB on disk).
+- Installer identity: Package/Identity/Name nannan2008.ZipFlow; Publisher CN=9D3EB93A-9404-46AA-BC8E-48F4BA2C798D; PublisherDisplayName nannan2008.
+- Network: no telemetry, analytics, crash uploads or cloud sync. The MSIX manifest does not declare the internetClient capability, so Windows blocks network access at the OS boundary.
+- Project repository: https://github.com/lijiannan1241/ZipFlow
+- Issue tracker: https://github.com/lijiannan1241/ZipFlow/issues
+
+## What ZipFlow does
+
+ZipFlow opens an archive without extracting it. It reads the archive index (names, sizes, offsets, compression methods, links, encryption flags) and runs seven checks. The result is a health report with a 0–100 score, a risk label, the affected entry names, and a JSON export.
+
+Before compression, ZipFlow samples the file mix and classifies the contents: source code, text documents, images, video, already-compressed media, binaries. It recommends a container, method and level, then estimates the space saving and runtime. Every option is labelled with interoperability: ★ opens everywhere, ◐ needs a newer OS, ! needs 7-Zip.
+
+## The seven archive safety checks
+
+1. **Path traversal (Zip Slip, CWE-22).** Entries whose resolved path escapes the destination, including `../` segments, absolute paths, Windows drive paths and UNC paths. Default action: blocked. CLI exit code 3.
+2. **Symlink escape.** A symbolic link pointing outside the extraction root, followed by an entry that writes through it. Default action: blocked.
+3. **Compression bomb.** Extreme expansion ratios, oversized declared output, or entry counts that could exhaust disk or memory. Default action: flagged.
+4. **Weak encryption.** Legacy ZipCrypto instead of AES-256, outdated parameters, or encrypted entries that cannot be verified. Default action: flagged.
+5. **Integrity anomalies.** Missing end-of-central-directory record, truncated data, CRC mismatches, inconsistent size fields. Default action: flagged.
+6. **Embedded executables.** `.exe`, `.scr`, `.bat`, `.cmd`, `.ps1`, `.lnk`, `.js`, and macro-enabled Office documents. Default action: flagged.
+7. **Duplicate or case-conflicting names.** Two entries with the same path, or names that collide on case-insensitive Windows volumes. Default action: flagged.
+
+ZipFlow is not an antivirus. It checks archive structure and extraction attack patterns, not malware signatures. A clean report means the archive passed seven structural checks; the payload can still be malicious.
+
+## How the health score works
+
+The score starts at 100. Each finding subtracts points by severity: low 3, medium 12, high 30, critical 60. A score of 100 means no issues were found. The risk label (low, medium, high, critical) comes from the most severe finding, not from the score. A 70/100 report can be labelled high risk because one high-severity finding costs 30 points.
+
+Reports export to JSON with the archive path, format, file size, entry count, total uncompressed size, ratio, risk level, score, engine, elapsed time, checks run, checks skipped and the finding list.
+
+## Smart compression
+
+ZipFlow samples the files before choosing settings. A typical recommendation looks like this:
+
+```
+Recommended: ZIP / deflate level 9 (max)
+★ Opens everywhere — Windows Explorer, macOS, Office, phones, cloud drives — no extra software needed.
+Reason: Mostly text and source code: ZIP with Deflate at the highest level. Slightly larger than 7z, but anyone can open it with a double click.
+Estimated saving: 80.6% (194.83 KB -> 37.72 KB)
+Estimated time: 0s
+Composition: text documents: 8
+```
+
+The `--info` flag prints a plan without writing a file:
+
+```
+★ Opens everywhere
+archive : big.zip
+format  : zip  method=(default) level=9 zopfli=False
+interop : ★ Opens everywhere
+           Windows Explorer, macOS, Office, phones, cloud drives — no extra software needed.
+sources : 194.83 KB in 8 file(s)
+free    : 83.90 GB
+Enough free space: 83.90 GB
+Estimated result: 37.72 KB (80.6%) in about 0s
+note    : Mostly text and source code: ZIP with Deflate at the highest level. Slightly larger than 7z, but anyone can open it with a double click.
+```
+
+Why ZIP is the default: ZIP opens in Windows Explorer, macOS, Office, phones and cloud drives without installing anything. 7z usually produces smaller files, but the recipient needs 7-Zip or a compatible tool. ZipFlow defaults to the format that works everywhere and lets the user choose 7z when size matters more.
+
+## Formats
+
+Read: 30+ formats, including ZIP, 7z, TAR, TAR.GZ, TAR.BZ2, TAR.XZ, TAR.ZST, Zstandard, RAR, ISO, CAB, DMG, LZ, CPIO, RPM, DEB, SquashFS, NSIS, VHD/VHDX/VDI/VMDK, WIM, UDF, EXT, ARJ, LZH, CHM, PPMd, multi-volume archives and OOXML.
+
+Write: ZIP (default), 7z, TAR, TAR.GZ, TAR.BZ2, TAR.XZ, TAR.ZST.
+
+ZIP features: Zip64, Deflate levels 1–9, AES-256 encryption, optional Zopfli compression.
+
+RAR is read-only. The compression algorithm is proprietary, so ZipFlow cannot create RAR. RAR and some disk-image formats require an installed 7-Zip engine, which ZipFlow calls as an optional backend. ZipFlow does not bundle 7-Zip.
+
+## Interfaces
+
+GUI: open an archive, browse the tree, run Health Report, export JSON, create archives with the Recommend Format button, extract with a destination and overwrite policy.
+
+CLI (`zf`; source build uses `python -m zipflow --cli`):
+
+```bash
+zf s suspicious.zip --json     # health report as JSON
+zf a dist.zip ./src            # create ZIP + Deflate L9
+zf a dist.7z ./src -f 7z       # smaller, recipient needs 7-Zip
+zf a dist.tar.zst ./src        # fast, Windows 11 24H2+ native
+zf a tiny.zip ./src --zopfli   # maximum compression, still universal
+zf a big.zip ./data --info     # plan only, no file written
+zf x dist.zip -o ./out         # extract
+zf l dist.zip                  # list
+zf t dist.zip                  # integrity test
+zf r ./src --prefer auto       # recommendation
+zf serve --port 8765           # localhost API with bearer token
+```
+
+Exit codes: 0 success, 1 general error, 2 usage error, 3 security block (critical path traversal or symlink escape), 4 wrong password, 5 external 7-Zip missing.
+
+The CLI returns 3 only for critical traversal or symlink findings. Other findings return 0, so CI can parse the JSON to enforce custom thresholds.
+
+API: FastAPI bound to 127.0.0.1, protected by a bearer token. It is not reachable from the network.
+
+The engine layer has no Qt dependency, so the GUI, CLI and API share behaviour and error codes.
+
+## Comparison with 7-Zip, WinRAR and Windows Explorer
+
+| Capability | ZipFlow 1.0.0 | 7-Zip | WinRAR | Windows Explorer |
+|---|---|---|---|---|
+| Price and licence | Free, LGPL-3.0 | Free, LGPL (unRAR restriction) | Paid licence, trial | Included with Windows |
+| Archive health report | 7 security checks + score | CRC test only | Test and recovery record, no security report | No |
+| Compression recommendation | Format, level, saving, time | Manual settings | Manual profiles | None |
+| Read formats | 30+, including ZIP, 7z, TAR, RAR*, ISO*, CAB*, DMG* | Very wide | Very wide | ZIP and some compressed folders |
+| Write formats | ZIP, 7z, TAR, TAR.GZ, TAR.BZ2, TAR.XZ, TAR.ZST | 7z, ZIP, TAR, GZ, BZ2, XZ, WIM and more | RAR, ZIP and more | ZIP only |
+| Create RAR | No | No | Yes | No |
+| CLI | zf | 7z | rar / unrar | No |
+| Local HTTP API | Yes, 127.0.0.1 + token | No | No | No |
+| Telemetry | None; no internetClient capability | None | No product telemetry documented | Windows telemetry settings apply |
+
+* Requires an installed 7-Zip engine.
+
+Choose ZipFlow for a safety check before extraction, compression recommendations, and one engine across GUI, CLI and API. Choose 7-Zip for the widest format support and raw compression control. Choose WinRAR if you must create RAR archives or use recovery records. Use Windows Explorer for a quick ZIP when the source is trusted.
+
+ZipFlow is not a fork of 7-Zip. It is an independent Python and PySide6 application. It calls an installed 7z.exe only for formats that need the external engine.
+
+## Privacy
+
+ZipFlow collects no data. It does not collect identity information, usage data, crash reports, device identifiers, advertising IDs, file contents, file names or file paths. There is no account or sign-in.
+
+The application runs entirely offline and makes no outbound network requests. The MSIX package does not declare the internetClient capability, so network access is blocked by the operating system. The local API binds to 127.0.0.1 and requires a bearer token.
+
+Settings are stored in `%APPDATA%\ZipFlow\settings.json`: interface language, theme, security thresholds, overwrite policy, recently opened archive paths, local API port and token. Uninstalling does not automatically delete this directory.
+
+If the app crashes, Windows Error Reporting may create a local crash dump. It is not sent to ZipFlow automatically.
+
+ZipFlow may optionally call an installed 7-Zip executable to read RAR, ISO and CAB. It passes only the local path of the archive being opened.
+
+## Safe unzip guide: how to check an archive before extracting
+
+To check a ZIP file safely, inspect its entry list without extracting: look for paths that climb out of the destination, symlinks pointing elsewhere, extreme compression ratios, weak encryption, integrity errors, embedded executables and duplicate names. ZipFlow runs all seven checks and returns a 0–100 score plus an exportable JSON report.
+
+The 60-second version:
+
+1. Do not double-click yet. Open the archive in a tool that reads its index, not one that extracts everything.
+2. Scan for `../` and absolute paths. Any entry that resolves outside the target folder is a path traversal attempt.
+3. Check the expansion ratio. A 42 KB archive that claims petabytes of output is a bomb, not a backup.
+4. Look at the file types. Scripts, shortcuts and macro documents inside an archive are the payloads most likely to run on a double-click.
+5. Verify the sender. A clean structure report says nothing about the intent of the person who sent it.
+
+Why a ZIP can be dangerous: a ZIP is a small filesystem. It contains a directory of names, sizes, offsets, compression methods and optional links, followed by compressed data. The extractor trusts that directory to decide where each file goes. If an entry is named `../../../../Users/Public/Startup/update.bat`, a vulnerable extractor joins it to the destination and writes outside the folder the user chose. This is Zip Slip, classified as CWE-22 path traversal. The same idea applies to symlinks and to declared sizes that expand far beyond the compressed file.
+
+Historical references: CVE-2007-4559 covers path traversal in Python's tarfile extraction. The classic 42.zip bomb is 42 KB and expands to 4.5 petabytes through nested archives.
+
+How to check with ZipFlow:
+
+1. Choose Open Archive and select the file. The tree, sizes and CRC values appear without extraction.
+2. Select Health Report. The report lists each check, the findings, the score and the risk level.
+3. Choose Export Report to save JSON for a ticket, an audit trail or a CI gate.
+4. If the report is clean and the sender is known, extract to a new folder. If it is high risk, do not extract on a production machine; verify the sender, scan with antivirus, or open it in a disposable VM.
+
+Limits: structural inspection is necessary, not sufficient. It is not antivirus. Encrypted contents stay hidden. New attack patterns appear. The extractor still matters.
+
+## Frequently asked questions
+
+**Is ZipFlow free?** Yes. Free to download and use, with no account, ads, in-app purchases or usage limits. The source is published under LGPL-3.0 on GitHub.
+
+**Does ZipFlow collect any data?** No. No telemetry, analytics or cloud sync. The Microsoft Store package does not declare internetClient, so Windows blocks network access. Files, filenames and archive paths never leave the device.
+
+**Can ZipFlow open RAR files?** Yes, when 7-Zip is installed, ZipFlow can list and extract RAR archives through its optional backend. RAR creation is not supported because the compression algorithm is proprietary.
+
+**Does ZipFlow replace an antivirus?** No. It checks archive structure and known extraction attack patterns, not malware signatures. Keep Windows Security or another antivirus enabled, and treat a clean report as one signal, not a guarantee.
+
+**How does the archive health score work?** The score starts at 100. Each finding subtracts points by severity: low 3, medium 12, high 30, critical 60. A score of 100 means no issues. The risk label comes from the most severe finding, and every report can be exported as JSON.
+
+**What formats can ZipFlow create?** Seven containers: ZIP (default), 7z, TAR, TAR.GZ, TAR.BZ2, TAR.XZ and TAR.ZST. ZIP supports Zip64, Deflate 1–9, AES-256 and optional Zopfli.
+
+**Does ZipFlow work offline?** Yes. Every feature, including the local HTTP API, runs on the machine. The API binds to 127.0.0.1 and requires a bearer token. There are no outbound network requests.
+
+**Is there a command-line interface?** Yes. The packaged app exposes zf, and the source build uses python -m zipflow --cli. Commands cover create, extract, list, test, recommend, health scan and a localhost API. Exit code 3 means a critical path traversal or symlink escape was found.
+
+**Which Windows versions are supported?** ZipFlow 1.0.0 supports 64-bit Windows 10 version 1809 or later, and Windows 11. It is distributed as an MSIX package through the Microsoft Store and as a portable build on GitHub.
+
+**Why default to ZIP instead of 7z?** ZIP opens in Windows Explorer, macOS, Office, phones and cloud drives without installing anything. 7z usually produces smaller files, but the recipient needs 7-Zip or a compatible tool. ZipFlow defaults to the format that works everywhere and lets the user choose 7z when size matters more.
+
+**Is ZipFlow open source?** Yes. ZipFlow is distributed under the LGPL-3.0 open-source licence. The licence text is in the repository, and third-party notices are included with the app.
+
+**Can I use ZipFlow in CI?** Yes. `zf s archive.zip --json` prints a machine-readable report. The command returns exit code 3 when a critical path traversal or symlink escape is found, so it can fail a build. Other findings can be enforced with a custom threshold by parsing the JSON.
+
+## Chinese summary
+
+ZipFlow（汇压缩）是一款免费、本地优先的 Windows 压缩解压软件。它在解压前读取压缩包结构，完成 7 项安全检测并给出 0–100 评分；压缩前采样文件构成，推荐格式、方法与档位，并预估节省空间与耗时。支持 30+ 种格式读取、7 种容器写入，GUI / CLI / 本地 API 共用同一引擎，完全离线运行。
+
+7 项检测：路径穿越（Zip Slip，CWE-22）、符号链接逃逸、压缩炸弹、弱加密、完整性异常、内嵌可执行文件、重复或大小写冲突。评分满分 100，按严重程度扣分：低 3、中 12、高 30、严重 60；风险等级取最严重的一项。ZipFlow 不是杀毒软件，不查病毒特征。
+
+支持格式：读取 ZIP、7z、TAR、TAR.GZ、TAR.BZ2、TAR.XZ、TAR.ZST、RAR（需安装 7-Zip）等 30+ 种；写入 ZIP、7z、TAR、TAR.GZ、TAR.BZ2、TAR.XZ、TAR.ZST。默认 ZIP，因为接收方无需安装软件即可打开。
+
+隐私：无遥测、无账号、无云同步；MSIX 清单不声明 internetClient 能力，由 Windows 在系统层面阻断联网。设置保存在 `%APPDATA%\ZipFlow\settings.json`。
+
+## Contact
+
+Questions and corrections: https://github.com/lijiannan1241/ZipFlow/issues
+Privacy policy: https://lijiannan1241.github.io/ZipFlow/privacy.html
