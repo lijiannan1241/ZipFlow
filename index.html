@@ -738,6 +738,108 @@ zf serve --port 8765</code></pre>
     </div>
   </section>
 
+  <!-- Blog Section -->
+  <section class="section section-paper" id="blog">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Blog</span>
+        <h2>Featured Articles</h2>
+      </div>
+      <div class="grid-2" style="grid-template-columns: repeat(2, 1fr); gap: 32px;">
+        <!-- Article 1 -->
+        <article class="card blog-card">
+          <div class="card-body">
+            <h3 class="card-title">Seven Security Checks Before Extraction</h3>
+            <p class="card-meta">Oct 30, 2026</p>
+            <p>ZipFlow runs seven structural checks before a single byte is written to disk: path traversal (Zip Slip), symlink escape, compression bomb, weak encryption, integrity anomalies, embedded executables, and duplicate/case-conflicting names. Each finding subtracts points (low 3, medium 12, high 30, critical 60). A score of 100 means no issues. <a href="safe-unzip.html">Read more</a>.</p>
+            <a href="https://apps.microsoft.com/detail/9np4kw9lpgft?cid=DevShareMCLPCS&hl=zh-CN&gl=CN" class="btn btn-primary btn-sm mt-auto">Get ZipFlow on Microsoft Store</a>
+          </div>
+        </article>
+        <!-- Article 2 -->
+        <article class="card blog-card">
+          <div class="card-body">
+            <h3 class="card-title">Smart Compression – Auto Recommend Best Format</h3>
+            <p class="card-meta">Oct 28, 2026</p>
+            <p>ZipFlow samples the file mix and classifies contents as text, images, video, or binaries. It then recommends a container (ZIP, 7z, TAR), method, level, estimated saving, and runtime. Every option is labeled: ★ opens everywhere, ◐ needs newer OS, ! needs 7-Zip. Add <code>--info</code> to preview without writing a file.</p>
+            <a href="https://apps.microsoft.com/detail/9np4kw9lpgft?cid=DevShareMCLPCS&hl=zh-CN&gl=CN" class="btn btn-primary btn-sm mt-auto">Get ZipFlow on Microsoft Store</a>
+          </div>
+        </article>
+        <!-- Article 3 -->
+        <article class="card blog-card">
+          <div class="card-body">
+            <h3 class="card-title">ZipFlow vs 7-Zip vs WinRAR vs Windows Explorer</h3>
+            <p class="card-meta">Oct 25, 2026</p>
+            <p>Compare four archivers across price, health reports, compression recommendations, write formats, RAR creation, CLI/API, and telemetry. Choose ZipFlow for safety + recommendations + one engine across GUI/CLI/API. Choose 7-Zip for format breadth, WinRAR for RAR creation, and Explorer for quick ZIPs.</p>
+            <a href="https://apps.microsoft.com/detail/9np4kw9lpgft?cid=DevShareMCLPCS&hl=zh-CN&gl=CN" class="btn btn-primary btn-sm mt-auto">Get ZipFlow on Microsoft Store</a>
+          </div>
+        </article>
+        <!-- Article 4 -->
+        <article class="card blog-card">
+          <div class="card-body">
+            <h3 class="card-title">Why ZIP Remains the Best Default Format</h3>
+            <p class="card-meta">Oct 23, 2026</p>
+            <p>ZIP is the only format that opens natively on Windows, macOS, Office, phones, and cloud drives without extra software. While 7z is smaller, the recipient needs 7-Zip. ZipFlow defaults to ZIP for universal compatibility, labeling each option with interoperability icons (★, ◐, !).</p>
+            <a href="https://apps.microsoft.com/detail/9np4kw9lpgft?cid=DevShareMCLPCS&hl=zh-CN&gl=CN" class="btn btn-primary btn-sm mt-auto">Get ZipFlow on Microsoft Store</a>
+          </div>
+        </article>
+        <!-- Article 5 -->
+        <article class="card blog-card">
+          <div class="card-body">
+            <h3 class="card-title">Automate Archiving in Your CI Pipeline</h3>
+            <p class="card-meta">Oct 20, 2026</p>
+            <p>ZipFlow’s CLI <code>zf</code> is designed for automation. <code>zf s archive.zip --json</code> exits 3 only for critical path-traversal or symlink escapes; other findings return 0. Use <code>--info</code> for dry-runs. Stable exit codes (0–5) integrate seamlessly into GitHub Actions and scripts.</p>
+            <a href="https://apps.microsoft.com/detail/9np4kw9lpgft?cid=DevShareMCLPCS&hl=zh-CN&gl=CN" class="btn btn-primary btn-sm mt-auto">Get ZipFlow on Microsoft Store</a>
+          </div>
+        </article>
+        <!-- Article 6 -->
+        <article class="card blog-card">
+          <div class="card-body">
+            <h3 class="card-title">Privacy by Design – Keep Your Files on Your Device</h3>
+            <p class="card-meta">Oct 18, 2026</p>
+            <p>ZipFlow collects zero telemetry, no account, no cloud sync. The MSIX package omits <code>internetClient</code>, so Windows blocks network access. The local API binds to 127.0.0.1 with a bearer token. All processing happens locally; your files, filenames, and paths never leave your device.</p>
+            <a href="https://apps.microsoft.com/detail/9np4kw9lpgft?cid=DevShareMCLPCS&hl=zh-CN&gl=CN" class="btn btn-primary btn-sm mt-auto">Get ZipFlow on Microsoft Store</a>
+          </div>
+        </article>
+        <!-- Article 7 -->
+        <article class="card blog-card">
+          <div class="card-body">
+            <h3 class="card-title">The Truth About RAR Support in ZipFlow</h3>
+            <p class="card-meta">Oct 15, 2026</p>
+            <p>RAR is a proprietary, read‑only format. ZipFlow can list and extract RAR archives when 7‑Zip is installed, using the external 7‑Zip engine. ZipFlow cannot create RAR archives. Built‑in formats (ZIP, 7z, TAR) work without 7‑Zip. The app labels RAR entries with “! needs 7-Zip.”</p>
+            <a href="https://apps.microsoft.com/detail/9np4kw9lpgft?cid=DevShareMCLPCS&hl=zh-CN&gl=CN" class="btn btn-primary btn-sm mt-auto">Get ZipFlow on Microsoft Store</a>
+          </div>
+        </article>
+        <!-- Article 8 -->
+        <article class="card blog-card">
+          <div class="card-body">
+            <h3 class="card-title">From Source Code to MSIX – ZipFlow 1.0.0 Release Journey</h3>
+            <p class="card-meta">Oct 12, 2026</p>
+            <p>ZipFlow 1.0.0 represents four years of development: Python 3.12 + PySide6 (LGPL‑3.0) GUI/CLI, a pure‑Python security engine, MSIX package through the Microsoft Store (≈53.9 MB, no <code>internetClient</code>), and portable GitHub Releases (≈130 MB). License: LGPL‑3.0; future 1.x releases will add plugin architecture and Linux support.</p>
+            <a href="https://apps.microsoft.com/detail/9np4kw9lpgft?cid=DevShareMCLPCS&hl=zh-CN&gl=CN" class="btn btn-primary btn-sm mt-auto">Get ZipFlow on Microsoft Store</a>
+          </div>
+        </article>
+        <!-- Article 9 -->
+        <article class="card blog-card">
+          <div class="card-body">
+            <h3 class="card-title">Open Anywhere – Format Compatibility Across Platforms</h3>
+            <p class="card-meta">Oct 10, 2026</p>
+            <p>Every ZipFlow-created archive carries an interoperability label: ZIP (★ opens everywhere), 7z (◐ needs 7‑Zip), TAR (◐ *nix), TAR.GZ/TAR.BZ2/TAR.XZ (◐ *nix), TAR.ZST/Zstandard (◐ Windows 11 24H2+). Choose ZIP for universal opening, 7z for smaller size when the recipient can install 7‑Zip.</p>
+            <a href="https://apps.microsoft.com/detail/9np4kw9lpgft?cid=DevShareMCLPCS&hl=zh-CN&gl=CN" class="btn btn-primary btn-sm mt-auto">Get ZipFlow on Microsoft Store</a>
+          </div>
+        </article>
+        <!-- Article 10 -->
+        <article class="card blog-card">
+          <div class="card-body">
+            <h3 class="card-title">ZipFlow – Free, Open‑Source Archive Manager for Windows</h3>
+            <p class="card-meta">Oct 8, 2026</p>
+            <p>ZipFlow is a free, local‑first archive manager for Windows 10/11, distributed as an MSIX package via the Microsoft Store (≈53.9 MB, no telemetry) and a portable build on GitHub Releases (≈130 MB, no installer). Key features: 7 security checks, smart compression, 30+ read formats, 7 write formats, CLI + HTTP API, LGPL‑3.0 license.</p>
+            <a href="https://apps.microsoft.com/detail/9np4kw9lpgft?cid=DevShareMCLPCS&hl=zh-CN&gl=CN" class="btn btn-primary btn-sm mt-auto">Get ZipFlow on Microsoft Store</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
